@@ -8,7 +8,7 @@
   <title>Keylogger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
-  <link href="/STATIC/bootstrap3/css/bootstrap.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="/STATIC/images/favicon.ico" />
   <style>
     @media (min-width: 768px) {
@@ -56,57 +56,45 @@
   <div class="container main">
     <!-- Begin navbar template -->
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/index.html">Jared Testbed</a>
-        </div>
-        <!-- Start of Nav -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/aboutme.html">About Me</a></li>
-            <li><a href="/puck.html">Puck Algorithm</a></li>
-            <li><a href="/biometric_word_list_translator.html">PGP Translator</a></li>
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Utilities<b class="caret"></b></a>
+        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/aboutme.html">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="/puck.html">Puck Algorithm</a></li>
+            <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP Translator</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" aria-current="page" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Utilities</a>
               <ul class="dropdown-menu">
-                <li><a href="/tracker.html">Web Beacon</a></li>
-                <li class="active"><a href="/keylogger.html">Keylogger</a></li>
+                <li><a class="dropdown-item" href="/tracker.html">Web Beacon</a></li>
+                <li><a class="dropdown-item active" href="/keylogger.html">Keylogger</a></li>
               </ul>
             </li>
           </ul>
-        </div><!-- end of .navbar-collapse -->
+        </div>
       </div>
     </nav>
     <!-- Begin tail import template -->
-    <script type="text/javascript" src="/STATIC/jQuery/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/STATIC/bootstrap3/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
-
       function navbarAdjust() {
-        var mq = $(window).width();
-        if (mq < 768) {
-          $(".navbar").addClass("navbar-fixed-top");
-        }
-        else {
-          $(".navbar").removeClass("navbar-fixed-top");
+        const navbar = document.querySelector('.navbar');
+        if (window.innerWidth < 768) {
+          navbar.classList.add('fixed-top');
+        } else {
+          navbar.classList.remove('fixed-top');
         }
       }
 
-
       navbarAdjust();
-      $(window).resize(navbarAdjust);
-
-
+      window.addEventListener('resize', navbarAdjust);
     </script>
 
     <div class="alert alert-info">
