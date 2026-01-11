@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Begin header template -->
+<head>
+<meta charset="utf-8">
+    <title>Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+    <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" />
+    <style>
+    @media (min-width: 765px){
+        body {
+            background-color: #242320;
+        }
+        .main {
+            background-color: white;
+            box-shadow: 10px 10px 5px black;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+
+            -moz-border-bottomleft: 35px;
+            border-bottom-left-radius: 35px;
+            -moz-border-bottomright: 35px;
+            border-bottom-right-radius: 35px;
+      }
+      .collapsable {
+        display: true;
+      }
+    }
+    @media (max-width: 765px){
+        body {
+            padding-top: 60px;
+        }
+        .main {
+            background-color: white;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .collapsable {
+            display: none;
+        }
+    }
+    </style>
+</head>
+  <body>
+    <div class="container main">
+<!-- Begin navbar template -->
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container">
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+  </div>
+  <div class="container">
+  <!-- Start of Nav -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        	<li><a href="/index.html">Home</a></li>
+
+        	<li><a href="/aboutme.html">About Me</a></li>
+
+
+
+        <li><a href="/puck.html">Puck Algorithm</a></li>
+
+        <li><a href="/biometric_word_list_translator.html">PGP Translator</a></li>
+
+
+        <li class="dropdown active">
+
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">Utilities<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+
+                     <li class="active"><a href="/tracker.html">Web Beacon</a></li>
+
+                     <li><a href="/keylogger.html">Keylogger</a></li>
+
+                     <li><a href="/teapot.html">Teapot Server</a></li>
+
+             </ul>
+        </li>
+
+        </li>
+
+
+
+    </ul>
+  </div><!-- end of .navbar-collapse -->
+  </div>
+</div>
+</nav>
+
+    
+      
+		<div class="alert alert-info">
+  		<strong>Disabled Feature</strong> Tracker currently disabled from the backend
+		</div>
+	</div>
+    
+<!-- Begin tail import template -->
+	<script type="text/javascript" src="/STATIC/jQuery/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap3/js/bootstrap.js"></script>
+<script>
+
+
+function navbarAdjust(){
+var mq = $( window ).width();
+if (mq < 764) {
+    $(".navbar").addClass("navbar-fixed-top");
+}
+else {
+    $(".navbar").removeClass("navbar-fixed-top");
+}
+}
+
+
+navbarAdjust();
+$(window).resize(navbarAdjust);
+
+
+</script>
+  </body>
+</html>
+
+

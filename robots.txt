@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /honeypot/passwords.txt

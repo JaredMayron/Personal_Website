@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Begin header template -->
+<head>
+<meta charset="utf-8">
+    <title>About Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+    <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" />
+    <style>
+    @media (min-width: 765px){
+        body {
+            background-color: #242320;
+        }
+        .main {
+            background-color: white;
+            box-shadow: 10px 10px 5px black;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+
+            -moz-border-bottomleft: 35px;
+            border-bottom-left-radius: 35px;
+            -moz-border-bottomright: 35px;
+            border-bottom-right-radius: 35px;
+      }
+      .collapsable {
+        display: true;
+      }
+    }
+    @media (max-width: 765px){
+        body {
+            padding-top: 60px;
+        }
+        .main {
+            background-color: white;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .collapsable {
+            display: none;
+        }
+    }
+    </style>
+</head>
+  <body>
+    <div class="container main">
+<!-- Begin navbar template -->
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container">
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+  </div>
+  <div class="container">
+  <!-- Start of Nav -->
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        	<li><a href="/index.html">Home</a></li>
+
+        	<li class="active"><a href="/aboutme.html">About Me</a></li>
+
+
+
+        <li><a href="/puck.html">Puck Algorithm</a></li>
+
+        <li><a href="/biometric_word_list_translator.html">PGP Translator</a></li>
+
+
+        <li class = "dropdown">
+
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">Utilities<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+
+                     <li><a href="/tracker.html">Web Beacon</a></li>
+
+                     <li><a href="/keylogger.html">Keylogger</a></li>
+
+
+
+             </ul>
+        </li>
+
+        </li>
+
+
+
+    </ul>
+  </div><!-- end of .navbar-collapse -->
+  </div>
+</div>
+</nav>
+    <div class="row">
+    	<div class="col-md-8">
+    	<h1 class="lead">I'm a security professional for web and security software living in Missouri</h1>
+    	<p>
+    	I enjoy coming up with simple solutions to complex problems, and coming up with solutions that others have missed.
+    	When I write code, I'll do some basic optimization, but I'll leave a bit to be optimized by compiler if it results in cleaner code.
+    	My real frst laguage as Java, but I find that I can write more elegant code in perl, javascript, c and python.<br><br>
+    	When I'm not coding I'm enjoying classic film or skiing.
+    	<p>
+	   </div>
+		<div class="col-md-4">
+    	<div class="list-group">
+  				<a class="list-group-item" href="STATIC/files/9A3C8302.asc">PGP Key: <span class="glyphicon glyphicon-lock pull-right"></span></a>
+                  <a class="list-group-item">Email: <span class="pull-right"><span id="e1">jared</span><span id="e2" class="hidden">blahblah</span>@<span id="e3">obfuscated</span><span id="e4" class="hidden">blah</span></span></a>
+                  <a class="list-group-item" href="https://twitter.com/JaredMayron">Twitter: <span class="pull-right">twitter.com/JaredMayron</span></a>
+  				<a class="list-group-item" href="http://www.linkedin.com/in/jaredmayron/">LinkedIn: <span class="pull-right">linkedin.com/in/jaredmayron/</span></a>
+  				<a class="list-group-item" href="https://github.com/JaredMayron">GitHub: <span class="pull-right">github.com/JaredMayron</span></a>
+    	  </div>
+    	</div>
+	 </div>
+  </div>
+
+
+<!-- Begin tail import template -->
+	<script type="text/javascript" src="/STATIC/jQuery/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap3/js/bootstrap.js"></script>
+<script>
+
+
+function navbarAdjust(){
+var mq = $( window ).width();
+if (mq < 764) {
+    $(".navbar").addClass("navbar-fixed-top");
+}
+else {
+    $(".navbar").removeClass("navbar-fixed-top");
+}
+}
+
+
+navbarAdjust();
+$(window).resize(navbarAdjust);
+
+
+</script>
+    <script>
+	$("#e1").text("jared")
+	$("#e2").text("fake")
+	$("#e3").text("mayron.us")
+	$("#e4").text("fake")
+	</script>
+  </body>
+</html>
