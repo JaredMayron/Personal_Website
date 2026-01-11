@@ -2,179 +2,181 @@
 <html lang="en">
 
 <!-- Begin header template -->
+
 <head>
-<meta charset="utf-8">
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
-    <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/images/favicon.ico" />
-    <style>
-    @media (min-width: 765px){
-        body {
-            background-color: #242320;
-        }
-        .main {
-            background-color: white;
-            box-shadow: 10px 10px 5px black;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-bottom: 50px;
-
-            -moz-border-bottomleft: 35px;
-            border-bottom-left-radius: 35px;
-            -moz-border-bottomright: 35px;
-            border-bottom-right-radius: 35px;
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+  <link href="/static/bootstrap3/css/bootstrap.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/static/images/favicon.ico" />
+  <style>
+    @media (min-width: 768px) {
+      body {
+        background-color: #242320;
       }
+
+      .main {
+        background-color: white;
+        box-shadow: 10px 10px 5px black;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
+
+        -moz-border-bottomleft: 35px;
+        border-bottom-left-radius: 35px;
+        -moz-border-bottomright: 35px;
+        border-bottom-right-radius: 35px;
+      }
+
       .collapsable {
-        display: true;
+        display: block;
       }
     }
-    @media (max-width: 765px){
-        body {
-            padding-top: 60px;
-        }
-        .main {
-            background-color: white;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-        .collapsable {
-            display: none;
-        }
+
+    @media (max-width: 767px) {
+      body {
+        padding-top: 60px;
+      }
+
+      .main {
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .collapsable {
+        display: none;
+      }
     }
-    </style>
+  </style>
 </head>
-  <body>
-    <div class="container main">
-<!-- Begin navbar template -->
 
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="container">
-   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+<body>
+  <div class="container main">
+    <!-- Begin navbar template -->
+
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+      </div>
+      <!-- Start of Nav -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/index.html">Home</a></li>
+          <li><a href="/aboutme.html">About Me</a></li>
+          <li><a href="/puck.html">Puck Algorithm</a></li>
+          <li><a href="/biometric_word_list_translator.html">PGP Translator</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Utilities<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/tracker.html">Web Beacon</a></li>
+              <li><a href="/keylogger.html">Keylogger</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- end of .navbar-collapse -->
   </div>
-  <div class="container">
-  <!-- Start of Nav -->
-  <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-        	<li class="active"><a href="/index.html">Home</a></li>
-
-        	<li><a href="/aboutme.html">About Me</a></li>
-
-
-
-        <li><a href="/puck.html">Puck Algorithm</a></li>
-
-        <li><a href="/biometric_word_list_translator.html">PGP Translator</a></li>
-
-
-        <li class = "dropdown">
-
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">Utilities<b class="caret"></b></a>
-             <ul class="dropdown-menu">
-
-                     <li><a href="/tracker.html">Web Beacon</a></li>
-
-                     <li><a href="/keylogger.html">Keylogger</a></li>
-
-
-
-             </ul>
-        </li>
-
-        </li>
-
-
-
-    </ul>
-  </div><!-- end of .navbar-collapse -->
+  </nav>
+  <div class="page-header jumbotron">
+    <h2>Jared's Webserver Testbed<br>
+      <small>Orphaned projects, game servers, and random stuff on a couple old machines that I really don't know what to
+        do with</small>
+    </h2>
   </div>
-</div>
-</nav>
-    	<div class="page-header jumbotron">
-		  <h2>Jared's Webserver Testbed<br>
-		  <small>Orphaned projects, game servers, and random stuff on a couple old machines that I really don't know what to do with</small></h2>
-	   </div>
 
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">Puck Algorithm Implementation <small>computational geometry problem</small></h3>
-        <p class="lead">Given a field of disks, and given a disk, find a path by which you can move the disk to the edge of the field without having the disk intersect with the other disks.
-          The algorithm uses a delaunay triangulation and a greedy depth first search implmentation to come up with with an interactive solution. </p>
-    </div>
+  <hr class="featurette-divider">
+  <div class="featurette">
+    <h3 class="featurette-heading">Puck Algorithm Implementation <small>computational geometry problem</small></h3>
+    <p class="lead">Given a field of disks, and given a disk, find a path by which you can move the disk to the edge of
+      the field without having the disk intersect with the other disks.
+      The algorithm uses a delaunay triangulation and a greedy depth first search implmentation to come up with with an
+      interactive solution. </p>
+  </div>
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-        <h3 class="featurette-heading">PGP Wordlist <small>web translator implementation</small></h3>
-        <p class="lead">The PGP wordlist is used to communicate bytes as a list of words in an unabigious way via a voice channel. Each of the words represents a byte value, and each byte can be even or odd.
-            The list uses 2 sets of words as a checking mechanisim in order to avoid dupicate, removed, or transposed values. The page traslates uses javascript to translate from to and from phonetic to byte string.
-        </p>
-    </div>
+  <hr class="featurette-divider">
+  <div class="featurette">
+    <h3 class="featurette-heading">PGP Wordlist <small>web translator implementation</small></h3>
+    <p class="lead">The PGP wordlist is used to communicate bytes as a list of words in an unabigious way via a voice
+      channel. Each of the words represents a byte value, and each byte can be even or odd.
+      The list uses 2 sets of words as a checking mechanisim in order to avoid dupicate, removed, or transposed values.
+      The page traslates uses javascript to translate from to and from phonetic to byte string.
+    </p>
+  </div>
 
-    <br>
-    <h2>Utilities</h2>
+  <br>
+  <h2>Utilities</h2>
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-        <h3 class="featurette-heading">Web Beacon <small>tracker server</small></h3>
-        <p class="lead">Web Beacons (web bug) are small bits of html code that makes a request to this server.
-        The request reveals the IP address of the host, and that ip address can reveal a citywide physical location.<br>
-        This app was based off of a talk that our campus' internal security auditor gave at our school security meet-up called <strong>secure lunch</strong>.
-        Older web bugs have to identify the target by passing in arguments to imported resource (1x1 pixel, invisible image, etc.).
-        This web bug is designed to evade most signature based web bug detection, as it doesn't have a defined signature like many web bugs.
+  <hr class="featurette-divider">
+  <div class="featurette">
+    <h3 class="featurette-heading">Web Beacon <small>tracker server</small></h3>
+    <p class="lead">Web Beacons (web bug) are small bits of html code that makes a request to this server.
+      The request reveals the IP address of the host, and that ip address can reveal a citywide physical location.<br>
+      This app was based off of a talk that our campus' internal security auditor gave at our school security meet-up
+      called <strong>secure lunch</strong>.
+      Older web bugs have to identify the target by passing in arguments to imported resource (1x1 pixel, invisible
+      image, etc.).
+      This web bug is designed to evade most signature based web bug detection, as it doesn't have a defined signature
+      like many web bugs.
 
-I had to shut this down when the location API became depricated.
-        </p>
-    </div>
+      I had to shut this down when the location API became depricated.
+    </p>
+  </div>
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-        <h3 class="featurette-heading">Keylogger <small>javascript keylogger</small></h3>
-        <p class="lead">Tiny javascript keylogger which uses encrypted DNS queries. Had to shut this down during a migration.
-        </p>
-    </div>
-
-
-    <hr class="featurette-divider">
-    <div class="featurette">
-    	<h3 class="featurette-heading">Teapot Server <small>fun with the Hyper Text Coffee Pot Control Protocol</small></h3><p class="lead">
-        With this server I messed around with the way that bottle sends back headers, using the WSGI HTTPError module within bottle. <a href="http://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">Described as a factitious communications protocol</a> this was one of the ways I got acclimated with the bottle framework. I doubt everything's implemented correctly, but it a good way to check out the html compliance level of your browser.
-
-Had to shut this down when I moved to static pages.</p>
-    </div>
-
-    <br>
-</div> <!--Main-->
-<!-- Begin tail import template -->
-	<script type="text/javascript" src="/STATIC/jQuery/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="/static/bootstrap3/js/bootstrap.js"></script>
-<script>
+  <hr class="featurette-divider">
+  <div class="featurette">
+    <h3 class="featurette-heading">Keylogger <small>javascript keylogger</small></h3>
+    <p class="lead">Tiny javascript keylogger which uses encrypted DNS queries. Had to shut this down during a
+      migration.
+    </p>
+  </div>
 
 
-function navbarAdjust(){
-var mq = $( window ).width();
-if (mq < 764) {
-    $(".navbar").addClass("navbar-fixed-top");
-}
-else {
-    $(".navbar").removeClass("navbar-fixed-top");
-}
-}
+  <hr class="featurette-divider">
+  <div class="featurette">
+    <h3 class="featurette-heading">Teapot Server <small>fun with the Hyper Text Coffee Pot Control Protocol</small></h3>
+    <p class="lead">
+      With this server I messed around with the way that bottle sends back headers, using the WSGI HTTPError module
+      within bottle. <a href="http://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">Described as a
+        factitious communications protocol</a> this was one of the ways I got acclimated with the bottle framework. I
+      doubt everything's implemented correctly, but it a good way to check out the html compliance level of your
+      browser.
+
+      Had to shut this down when I moved to static pages.</p>
+  </div>
+
+  <br>
+  </div> <!--Main-->
+  <!-- Begin tail import template -->
+  <script type="text/javascript" src="/STATIC/jQuery/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/static/bootstrap3/js/bootstrap.js"></script>
+  <script>
 
 
-navbarAdjust();
-$(window).resize(navbarAdjust);
+    function navbarAdjust() {
+      var mq = $(window).width();
+      if (mq < 768) {
+        $(".navbar").addClass("navbar-fixed-top");
+      }
+      else {
+        $(".navbar").removeClass("navbar-fixed-top");
+      }
+    }
 
 
-</script>
-  </body>
+    navbarAdjust();
+    $(window).resize(navbarAdjust);
+
+
+  </script>
+</body>
+
 </html>
