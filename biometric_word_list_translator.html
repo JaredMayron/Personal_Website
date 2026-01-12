@@ -82,7 +82,7 @@
                 </div>
             </div>
         </nav>
-        <h1>Biometric Word List Translator <small>client side implmentation</small></h1>
+        <h1>Biometric Word List Translator <small>client side implementation</small></h1>
         <br>
         <textarea id="hex" class="form-control" placeholder="Hex" disabled></textarea>
         <br>
@@ -192,7 +192,7 @@
                     if (bin == null) {
                         consoleEl.insertAdjacentHTML("beforeend", "<p>Word " + index + " entered [The " + (index + 1) + " word in the string] is not a valid word in the PGP wordlist, words are case sensitive and proper nouns are capitalized</p>");
                     } else {
-                        consoleEl.insertAdjacentHTML("beforeend", "<p>Word " + index + " entered [The " + (index + 1) + " word in the string] is a correct word but at the incorrect position, this may indicate a word is duplicated, ommitted or transposed in the sequence</p>");
+                        consoleEl.insertAdjacentHTML("beforeend", "<p>Word " + index + " entered [The " + (index + 1) + " word in the string] is a correct word but at the incorrect position, this may indicate a word is duplicated, omitted or transposed in the sequence</p>");
                     }
                     continue;
                 }

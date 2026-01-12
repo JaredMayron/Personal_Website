@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Puck Algorithm Implmenetation</title>
+  <title>Puck Algorithm Implementation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -114,23 +114,23 @@
       canvas. Click the canvas to place a starting puck at any given location, when you click another location that puck
       ceases to be the starting puck and the newest puck created becomes the starting puck.
     </p>
-    <h2>Implmentation</h2>
+    <h2>Implementation</h2>
     <p class="lead">
-      This program is implmented entirely in javascript with 3 files:
+      This program is implemented entirely in JavaScript with 3 files:
     <ul>
       <li>Canvas.js: Basic drawing functions</li>
-      <li>Delaunay.js: Creates the delaunay triangulation out of the feild of pucks</li>
-      <li>Puck.js: Builds an iterable map and runs a modified depth first search to find a path out of the feild of
+      <li>Delaunay.js: Creates the delaunay triangulation out of the field of pucks</li>
+      <li>Puck.js: Builds an iterable map and runs a modified depth first search to find a path out of the field of
         pucks
       </li>
     </ul>
     </p>
     <p class="lead">
-      There's javascript that serves a wrapper in the main page, but it mostly serves as a wrapper for these functions
+      There's JavaScript that serves a wrapper in the main page, but it mostly serves as a wrapper for these functions
       (mostly the Demo.render() method). In general during each render the program:
     <ol>
       <li>Delaunay.js creates a raw triangulation with global.triangulate</li>
-      <li>Puck.js creates a mappable data structure with global.build, incuding discovering the convex hull</li>
+      <li>Puck.js creates a mappable data structure with global.build, including discovering the convex hull</li>
       <li>Puck.js paths through the data structure, producing a path with global.path</li>
       <li>This pages calls Canvas.js to render the edges, fills in the triangles, and renders the path to end</li>
     </ol>
@@ -138,28 +138,29 @@
     <h2>Coloring</h2>
     <p class="lead">
     <ul>
-      <li>The white space is the space outside of the arragement</li>
+      <li>The white space is the space outside of the arrangement</li>
       <li>Green Edges are passable by the puck</li>
       <li>Red Edges are unpassable by the puck</li>
-      <li>Orange Edges are passable edges by the puck and are on the edge of the arragement</li>
+      <li>Orange Edges are passable edges by the puck and are on the edge of the arrangement</li>
       <li>Blue Pucks are pucks to be pathed around</li>
       <li>The Red puck is the starting puck</li>
       <li>Green Triangles are passable</li>
       <li>Red Triangles are not passable</li>
       <li>Purple Triangles are explored</li>
-      <li>The Gray line is the path out of the arragment (the puck can legally exist in any triangle interesected by it,
+      <li>The Gray line is the path out of the arrangement (the puck can legally exist in any triangle intersected by
+        it,
         most of the time it is the correct path [see bugs])</li>
     </ul>
     </p>
     <h2>Why does it work?</h2>
     <p class="lead">
-      Every delaunay edge is the closest path from one point to another, and each circumcicle is equadistant between
+      Every delaunay edge is the closest path from one point to another, and each circumcircle is equidistant between
       each
       of the points. Futhermore each triangle's circumcircle does not contain any other point. What that means is a puck
       can pass between 2 other points if there's a delaunay edge between them and the puck can fit between them. A puck
       can pass through a triangle if it can fit in the circumcenter's radius. Due to the fact this is a delaunay
       triangulation, those points on the edges are the farthest away from adjacent disks. Circumcircle centers are the
-      farthest away from the verticies of the delaunay triangulation.
+      farthest away from the vertices of the delaunay triangulation.
     </p>
     <p class="lead">
       I'm able to determine the convex hull in O(n) time since I kept track of neighbors. Each edge has between 1 and 2
@@ -172,18 +173,18 @@
     <h2>How fast is it?</h2>
     <p class="lead">
     <ol>
-      <li>The triangulation runs in O(n log n) time since it used the edge flip method and there are only O(n log n)
+      <li>The triangulation runs in O(n log n) time since it uses the edge flip method and there are only O(n log n)
         edge
         flips possible.</li>
-      <li>Build takes O(3n) time since it iterates though all ther triangles and verticies in constant time. The convex
-        hull is extracted in O(3n) time since each edge has a neighbor and the number can be checked in O(3n) time.</lI>
+      <li>Build takes O(3n) time since it iterates through all the triangles and vertices in constant time. The convex
+        hull is extracted in O(3n) time since each edge has a neighbor and the number can be checked in O(3n) time.</li>
       <li>Pathing does not explore any triangle more than once, therefore it runs in O(n) time. The map is explored with
         minimum edge distance heuristic (justAnotherGreedyHeuristic) so it's faster than that most of the time.</li>
       <li>Rendering takes in O(n + m) time since it's limited by the size of the path and the number of triangles. Since
-        the leghth of the path is at maximum a factor of the number of triangles, it total it runs in O(n) time.</li>
-      <li> Space worst case is the limiting factor of O(n^2) since edges and vertecies are related and there can be
+        the length of the path is at maximum a factor of the number of triangles, it total it runs in O(n) time.</li>
+      <li> Space worst case is the limiting factor of O(n^2) since edges and vertices are related and there can be
         equal
-        number of both. This is pretty close to an impossiblity although I can not prove it formally. Google Chrome
+        number of both. This is pretty close to an impossibility although I can not prove it formally. Google Chrome
         usually gets slow for me at about 250 disks.</li>
     </ol>
     </p>
@@ -197,7 +198,7 @@
     <p class="lead">
       I've used sets whenever possible so that duplicate detection can be done in O(1) time. I've stored a radius in
       each
-      vertex for the possiblility of having variable sized pucks, something that I was not able to achieve. Each I split
+      vertex for the possibility of having variable sized pucks, something that I was not able to achieve. Each I split
       puck into 2 methods so they could possibly split during certain operations, another optimization I was not able to
       achieve.
     </p>
@@ -205,7 +206,7 @@
     <h2>Bugs</h2>
     <p class="lead">
     <ol>
-      <li>Double lines may render becaouse of misalignments in canvas.js (sometime noticable on the convex hull)</li>
+      <li>Double lines may render because of misalignments in canvas.js (sometime noticable on the convex hull)</li>
       <li>The path line will get to close to the vertex of an obtuse triangle sometimes, and delaunay.js will ignore
         triangles so obtuse that they're basically canonical</li>
       <li>It's on the web, so things sometimes don't load at the same time</li>
@@ -324,7 +325,7 @@
         //Draw step
         this.triangles.forEach(function (triangle) {
 
-          //Renderes each edge
+          //Renders each edge
           var edges = triangle.edges;
           for (var i = 0; i < 3; i++) {
 
@@ -379,7 +380,7 @@
           // context.stroke();
         });
 
-        //Renders each of the verticies
+        //Renders each of the vertices
         this.vertices.forEach(function (vertex) {
           var radius = vertex.radius;
           if (!radius) { radius = pucksize; }
@@ -387,7 +388,7 @@
           context.arc(vertex.x, vertex.y, radius, 0, Math.PI * 2, true);
           context.closePath();
 
-          //Reners
+          //Renders
           if (vertex.startPuck) {
             context.fillStyle = "#FF0F00";
           } else {
