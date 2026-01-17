@@ -103,15 +103,19 @@
       transform: translateY(-2px);
     }
 
-    .card-hero {
-      grid-column: span 2;
+    .card-hero-3w {
+      grid-column: span 3;
       grid-row: span 2;
       background: var(--bg-muted);
     }
 
-    .card-tall {
-      grid-column: span 2;
+    .card-tall-1w {
+      grid-column: span 1;
       grid-row: span 2;
+    }
+
+    .card-1w {
+      grid-column: span 1;
     }
 
     .card-wide {
@@ -153,6 +157,11 @@
       border-color: var(--accent-green);
     }
 
+    [data-theme='dark'] .puck-visual {
+      background-color: var(--bg-base);
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI4MCIgY3k9IjEyMCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjI1IiBmaWxsPSJyZ2JhKDE2LCAxODUsIDEyOSwgMC4yKSIgc3Ryb2tlPSIjMTBiOTgxIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI4MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTAwIEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=');
+    }
+
     .btn-ui:hover {
       opacity: 0.9;
       transform: translateY(-1px);
@@ -176,7 +185,7 @@
       width: 100%;
       margin-top: 24px;
       border-radius: 12px;
-      background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjIwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMGI5ODEiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHBhdGggZD0iTTUwIDEwMCBMMTUwIDUwIEwyNTAgMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMGI5ODEiIHN0cm9rZS1kYXNoYXJyYXk9IjYsNiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+') center no-repeat;
+      background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI4MCIgY3k9IjEyMCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjI1IiBmaWxsPSJyZ2JhKDE2LCAxODUsIDEyOSwgMC4xKSIgc3Ryb2tlPSIjMTBiOTgxIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI4MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTAwIEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=') center no-repeat;
       border: 1px solid var(--border-subtle);
     }
 
@@ -241,12 +250,12 @@
   </nav>
 
   <main class="bento-grid" style="margin-top: 20px;">
-    <!-- Row 1: Puck & PGP (2W x 2H) -->
+    <!-- Row 1: Puck (3W) & PGP (1W) (2H) -->
     <!-- Puck Algorithm -->
-    <a href="/puck.html" class="bento-card card-hero status-active">
+    <a href="/puck.html" class="bento-card card-hero-3w status-active">
       <div>
         <h3 class="serif h2 mb-3">Puck Algorithm</h3>
-        <p class="text-secondary" style="max-width: 500px;">Navigating dynamic disk fields via Delaunay triangulation
+        <p class="text-secondary" style="max-width: 600px;">Navigating dynamic disk fields via Delaunay triangulation
           and greedy DFS. A study in computational geometry.</p>
         <div class="puck-visual"></div>
       </div>
@@ -256,18 +265,17 @@
     </a>
 
     <!-- PGP Translator -->
-    <a href="/biometric_word_list_translator.html" class="bento-card card-tall">
+    <a href="/biometric_word_list_translator.html" class="bento-card card-tall-1w">
       <div>
-        <h3 class="serif h4">PGP Translator</h3>
-        <p class="small text-secondary mb-4">Biometric Word List implementation for secure voice channel communication.
-        </p>
-        <div class="mono small p-3 bg-white rounded border"
-          style="border-left: 3px solid var(--accent-green) !important;">
+        <h3 class="serif h5">PGP Translator</h3>
+        <p class="small text-secondary mb-4">Voice channel security.</p>
+        <div class="mono small p-2 bg-white rounded border"
+          style="border-left: 3px solid var(--accent-green) !important; font-size: 0.7rem;">
           [Hex] → [Words]
         </div>
       </div>
-      <div class="mt-auto pt-4">
-        <span class="btn-ui w-100 text-center">TRANSLATE</span>
+      <div class="mt-auto pt-3">
+        <span class="btn-ui w-100 text-center" style="font-size: 0.7rem;">TRANSLATE</span>
       </div>
     </a>
 
@@ -285,7 +293,7 @@
       </div>
     </div>
 
-    <!-- Utilities Wide -->
+    <!-- Web Utilities -->
     <div class="bento-card card-wide">
       <div>
         <h3 class="serif h4">Web Utilities</h3>
@@ -298,25 +306,25 @@
       </div>
     </div>
 
-    <!-- Row 3: Beacon & Keylogger (2W x 1H) -->
+    <!-- Row 3: Beacon & Keylogger (1W x 1H) -->
     <!-- Web Beacon -->
-    <a href="/tracker.html" class="bento-card card-wide card-legacy">
+    <a href="/tracker.html" class="bento-card card-1w card-legacy">
       <div>
         <div class="badge-legacy">Legacy</div>
-        <h3 class="serif h5">Web Beacon</h3>
-        <p class="small text-secondary">Passive tracking and IP geolocation vectors study.</p>
+        <h3 class="serif h6">Web Beacon</h3>
+        <p class="small text-secondary mb-1">Passive tracking study.</p>
       </div>
-      <div class="mono small text-secondary"><span class="status-dot"></span>dormant</div>
+      <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
     </a>
 
     <!-- Keylogger -->
-    <a href="/keylogger.html" class="bento-card card-wide card-legacy">
+    <a href="/keylogger.html" class="bento-card card-1w card-legacy">
       <div>
         <div class="badge-legacy">Legacy</div>
-        <h3 class="serif h5">Keylogger</h3>
-        <p class="small text-secondary">Experimentation with encrypted DNS exfiltration.</p>
+        <h3 class="serif h6">Keylogger</h3>
+        <p class="small text-secondary mb-1">DNS exfiltration.</p>
       </div>
-      <div class="mono small text-secondary"><span class="status-dot"></span>dormant</div>
+      <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
     </a>
   </main>
 
