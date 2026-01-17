@@ -136,13 +136,25 @@
 
     .btn-ui {
       background: var(--text-main);
-      color: white;
-      border: none;
+      color: var(--bg-base);
+      border: 1px solid var(--text-main);
       padding: 10px 20px;
       border-radius: 8px;
       font-weight: 600;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    [data-theme='dark'] .btn-ui {
+      background: var(--accent-green);
+      color: #0f172a;
+      border-color: var(--accent-green);
+    }
+
+    .btn-ui:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
 
     .status-dot {
@@ -252,16 +264,6 @@
         <a href="/aboutme.html" class="mono small text-decoration-none text-main">Read More &rarr;</a>
       </div>
     </div>
-    <div>
-      <h3 class="serif h2 mb-3">Puck Algorithm</h3>
-      <p class="text-secondary" style="max-width: 500px;">Navigating dynamic disk fields via Delaunay triangulation
-        and greedy DFS. A study in computational geometry.</p>
-      <div class="puck-visual"></div>
-    </div>
-    <div class="mt-4">
-      <span class="btn-ui">EXPLORE DEMO</span>
-    </div>
-    </a>
 
     <!-- PGP Translator -->
     <a href="/biometric_word_list_translator.html" class="bento-card card-tall">

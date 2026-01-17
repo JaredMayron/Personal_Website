@@ -110,6 +110,13 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
     }
+
+    /* Dark Mode Button Overrides */
+    [data-theme='dark'] .btn-dark {
+      background-color: var(--accent-green);
+      color: #0f172a;
+      border-color: var(--accent-green);
+    }
   </style>
 </head>
 
@@ -291,263 +298,266 @@
       dedicated to the <a rel="license" href="http://creativecommons.org/licenses/publicdomain/">Public Domain</a>.
     </p>
 
-  </div>
+    <footer class="container text-center text-secondary mono py-5 mt-5"
+      style="font-size: 0.75rem; border-top: 1px solid var(--border-subtle);">
+      &copy; 2026 // Jared Mayron
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const themeToggleBtn = document.getElementById('theme-toggle');
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+      const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+      const themeToggleBtn = document.getElementById('theme-toggle');
 
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      themeToggleLightIcon.classList.remove('d-none');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      themeToggleDarkIcon.classList.remove('d-none');
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-
-    themeToggleBtn.addEventListener('click', function () {
-      themeToggleDarkIcon.classList.toggle('d-none');
-      themeToggleLightIcon.classList.toggle('d-none');
-
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('color-theme', 'light');
-      } else {
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('d-none');
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('color-theme', 'dark');
-      }
-    });
-
-    function navbarAdjust() {
-      const navbar = document.querySelector('.navbar');
-      if (window.innerWidth < 768) {
-        navbar.classList.add('fixed-top');
       } else {
-        navbar.classList.remove('fixed-top');
+        themeToggleDarkIcon.classList.remove('d-none');
+        document.documentElement.setAttribute('data-theme', 'light');
       }
-    }
 
-    navbarAdjust();
-    window.addEventListener('resize', navbarAdjust);
-  </script>
+      themeToggleBtn.addEventListener('click', function () {
+        themeToggleDarkIcon.classList.toggle('d-none');
+        themeToggleLightIcon.classList.toggle('d-none');
 
-  <script type="text/javascript" src="/STATIC/javascript/canvas.js"></script>
-  <script type="text/javascript" src="/STATIC/javascript/delaunay.js"></script>
-  <script type="text/javascript" src="/STATIC/javascript/puck.js"></script>
-  <script type="text/javascript">
-
-    var pucksize = 13;
-    var canvasWidth = 1000;
-    var canvasHeight = 700;
-
-    function Demo() {
-      this.vertices = [];
-      this.triangles = null;
-
-      this.startPuck = null;
-      this.placePuck = true;
-      this.path = [];
-
-      this.render = {};
-
-      //Adds the target puck, replaces the old target puck
-      this.addAt = function (x, y) {
-
-        //If the puck is a target puck is updated at render;
-        var vertex = new Vertex(x, y);
-        vertex.radius = pucksize;
-        if (this.placePuck) {
-          this.startPuck = vertex;
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('color-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('color-theme', 'dark');
         }
-        this.vertices.push(vertex);
-        this.render();
-      };
+      });
 
-      //Adds a series of pucks
-      this.add = function (n) {
-        var canvas = document.getElementById('canvas');
-        var w = Number(canvas.width), h = Number(canvas.height);
-        var inset = 25;
-
-        for (var i = 0; i < n; i++) {
-          var vertex = new Vertex(Math.random() * (w - 2 * inset) + inset, Math.random() * (h - 2 * inset) + inset);
-          vertex.radius = pucksize;
-          this.vertices.push(vertex);
+      function navbarAdjust() {
+        const navbar = document.querySelector('.navbar');
+        if (window.innerWidth < 768) {
+          navbar.classList.add('fixed-top');
+        } else {
+          navbar.classList.remove('fixed-top');
         }
-        this.render();
-      };
+      }
 
-      this.clear = function () {
-        this.triangles = [];
+      navbarAdjust();
+      window.addEventListener('resize', navbarAdjust);
+    </script>
+
+    <script type="text/javascript" src="STATIC/javascript/canvas.js"></script>
+    <script type="text/javascript" src="STATIC/javascript/delaunay.js"></script>
+    <script type="text/javascript" src="STATIC/javascript/puck.js"></script>
+    <script type="text/javascript">
+
+      var pucksize = 13;
+      var canvasWidth = 1000;
+      var canvasHeight = 700;
+
+      function Demo() {
         this.vertices = [];
+        this.triangles = null;
+
+        this.startPuck = null;
+        this.placePuck = true;
         this.path = [];
-        this.render();
-      }
 
-      //Renders the complete diagram
-      this.render = function () {
+        this.render = {};
 
+        //Adds the target puck, replaces the old target puck
+        this.addAt = function (x, y) {
 
-        var canvas = document.getElementById('canvas');
-        if (!canvas.getContext)
-          return;
+          //If the puck is a target puck is updated at render;
+          var vertex = new Vertex(x, y);
+          vertex.radius = pucksize;
+          if (this.placePuck) {
+            this.startPuck = vertex;
+          }
+          this.vertices.push(vertex);
+          this.render();
+        };
 
-        var context = canvas.getContext('2d');
-        context.clearRect(0, 0, Number(canvas.width), Number(canvas.height));
+        //Adds a series of pucks
+        this.add = function (n) {
+          var canvas = document.getElementById('canvas');
+          var w = Number(canvas.width), h = Number(canvas.height);
+          var inset = 25;
 
-        if (this.vertices.length == 0) { return; }
+          for (var i = 0; i < n; i++) {
+            var vertex = new Vertex(Math.random() * (w - 2 * inset) + inset, Math.random() * (h - 2 * inset) + inset);
+            vertex.radius = pucksize;
+            this.vertices.push(vertex);
+          }
+          this.render();
+        };
 
-        //Creates the delaunay triangulation
-        this.triangles = triangulate(this.vertices);
-
-        if (this.triangles == null) { return; }
-
-        //Build the mesh
-        this.triangles = build(this.triangles, this.startPuck, pucksize, canvas);
-
-        //Find the path
-        if (this.startPuck != null) {
-          this.path = path(this.triangles, this.startPuck);
+        this.clear = function () {
+          this.triangles = [];
+          this.vertices = [];
+          this.path = [];
+          this.render();
         }
 
+        //Renders the complete diagram
+        this.render = function () {
+
+
+          var canvas = document.getElementById('canvas');
+          if (!canvas.getContext)
+            return;
+
+          var context = canvas.getContext('2d');
+          context.clearRect(0, 0, Number(canvas.width), Number(canvas.height));
+
+          if (this.vertices.length == 0) { return; }
+
+          //Creates the delaunay triangulation
+          this.triangles = triangulate(this.vertices);
+
+          if (this.triangles == null) { return; }
+
+          //Build the mesh
+          this.triangles = build(this.triangles, this.startPuck, pucksize, canvas);
+
+          //Find the path
+          if (this.startPuck != null) {
+            this.path = path(this.triangles, this.startPuck);
+          }
 
 
 
-        //Draw step
-        this.triangles.forEach(function (triangle) {
 
-          //Renders each edge
-          var edges = triangle.edges;
-          for (var i = 0; i < 3; i++) {
+          //Draw step
+          this.triangles.forEach(function (triangle) {
 
-            var edge = edges[i];
-            context.beginPath();
-            context.moveTo(edge.v0.x, edge.v0.y);
-            context.lineTo(edge.v1.x, edge.v1.y);
-            context.closePath();
+            //Renders each edge
+            var edges = triangle.edges;
+            for (var i = 0; i < 3; i++) {
+
+              var edge = edges[i];
+              context.beginPath();
+              context.moveTo(edge.v0.x, edge.v0.y);
+              context.lineTo(edge.v1.x, edge.v1.y);
+              context.closePath();
 
 
-            //Renders the passable sections of the convex hull
-            if (edge.passable && edge.outside) {
-              context.strokeStyle = "#FF7E00";
-              //Renders passable edges
-            } else if (edge.passable) {
-              context.strokeStyle = "#00571B";
-            } else {
-              context.strokeStyle = "#660200";
+              //Renders the passable sections of the convex hull
+              if (edge.passable && edge.outside) {
+                context.strokeStyle = "#FF7E00";
+                //Renders passable edges
+              } else if (edge.passable) {
+                context.strokeStyle = "#00571B";
+              } else {
+                context.strokeStyle = "#660200";
+              }
+
+
+              context.lineWidth = 10;
+              context.stroke();
             }
 
 
-            context.lineWidth = 10;
+            context.beginPath();
+            context.moveTo(triangle.v0.x, triangle.v0.y);
+            context.lineTo(triangle.v1.x, triangle.v1.y);
+            context.lineTo(triangle.v2.x, triangle.v2.y);
+            context.closePath();
+
+            //Fills the triangle if it's explored, passable or unpassable
+            if (triangle.explored) {
+              context.fillStyle = "#BE00FF";
+              context.fill();
+            } else if (triangle.passable) {
+              context.fillStyle = "#00FF4E";
+              context.fill();
+            } else {
+              context.fillStyle = "#FFA8A5";
+              context.fill();
+            }
+
+
+
+            // Display circumcircles
+            // context.beginPath();
+            // context.arc( triangle.center.x, triangle.center.y, triangle.radius, 0, Math.PI*2, true );
+            // context.closePath();
+            // context.strokeStyle= "#808080";
+            // context.stroke();
+          });
+
+          //Renders each of the vertices
+          this.vertices.forEach(function (vertex) {
+            var radius = vertex.radius;
+            if (!radius) { radius = pucksize; }
+            context.beginPath();
+            context.arc(vertex.x, vertex.y, radius, 0, Math.PI * 2, true);
+            context.closePath();
+
+            //Renders
+            if (vertex.startPuck) {
+              context.fillStyle = "#FF0F00";
+            } else {
+              context.fillStyle = "#4D4B7F";
+            }
+
+            context.fill();
+          });
+
+          if (this.path.length > 0) {
+            var prevVertex = this.path[0];
+            context.beginPath();
+            context.moveTo(prevVertex.x, prevVertex.y);
+            for (var index = 1; index < this.path.length; index++) {
+              var vertex = this.path[index];
+              context.lineTo(vertex.x, vertex.y);
+
+            }
+            context.lineWidth = 3;
+            context.strokeStyle = "#A0A0B0";
             context.stroke();
           }
+        };
 
 
-          context.beginPath();
-          context.moveTo(triangle.v0.x, triangle.v0.y);
-          context.lineTo(triangle.v1.x, triangle.v1.y);
-          context.lineTo(triangle.v2.x, triangle.v2.y);
-          context.closePath();
-
-          //Fills the triangle if it's explored, passable or unpassable
-          if (triangle.explored) {
-            context.fillStyle = "#BE00FF";
-            context.fill();
-          } else if (triangle.passable) {
-            context.fillStyle = "#00FF4E";
-            context.fill();
-          } else {
-            context.fillStyle = "#FFA8A5";
-            context.fill();
-          }
-
-
-
-          // Display circumcircles
-          // context.beginPath();
-          // context.arc( triangle.center.x, triangle.center.y, triangle.radius, 0, Math.PI*2, true );
-          // context.closePath();
-          // context.strokeStyle= "#808080";
-          // context.stroke();
-        });
-
-        //Renders each of the vertices
-        this.vertices.forEach(function (vertex) {
-          var radius = vertex.radius;
-          if (!radius) { radius = pucksize; }
-          context.beginPath();
-          context.arc(vertex.x, vertex.y, radius, 0, Math.PI * 2, true);
-          context.closePath();
-
-          //Renders
-          if (vertex.startPuck) {
-            context.fillStyle = "#FF0F00";
-          } else {
-            context.fillStyle = "#4D4B7F";
-          }
-
-          context.fill();
-        });
-
-        if (this.path.length > 0) {
-          var prevVertex = this.path[0];
-          context.beginPath();
-          context.moveTo(prevVertex.x, prevVertex.y);
-          for (var index = 1; index < this.path.length; index++) {
-            var vertex = this.path[index];
-            context.lineTo(vertex.x, vertex.y);
-
-          }
-          context.lineWidth = 3;
-          context.strokeStyle = "#A0A0B0";
-          context.stroke();
-        }
       };
 
+      var demo = new Demo();
+      //Slider code, removed
+      // var pucksize = parseInt($("#pucksize").val());
+      // $("#puckLabel").text(pucksize);
 
-    };
+      // $("#pucksize").change( function(){
+      //   pucksize = $("#pucksize").val();
+      //   $("#puckLabel").text(pucksize);
+      //   if(demo.startPuck != null){demo.startPuck.radius=pucksize;}
+      //   demo.render();
+      //   });
+      window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        canvas.addEventListener("click", function (e) {
+          e = e ? e : window.event;
+          var rect = this.getBoundingClientRect();
 
-    var demo = new Demo();
-    //Slider code, removed
-    // var pucksize = parseInt($("#pucksize").val());
-    // $("#puckLabel").text(pucksize);
+          var x = e.clientX * (canvasWidth / canvas.offsetWidth) - rect.left;
+          var y = e.clientY * (canvasHeight / canvas.offsetHeight) - rect.top;
+          demo.addAt(x, y);
+        });
+      };
 
-    // $("#pucksize").change( function(){
-    //   pucksize = $("#pucksize").val();
-    //   $("#puckLabel").text(pucksize);
-    //   if(demo.startPuck != null){demo.startPuck.radius=pucksize;}
-    //   demo.render();
-    //   });
-    window.onload = function () {
-      var canvas = document.getElementById("canvas");
-      canvas.addEventListener("click", function (e) {
-        e = e ? e : window.event;
-        var rect = this.getBoundingClientRect();
-
-        var x = e.clientX * (canvasWidth / canvas.offsetWidth) - rect.left;
-        var y = e.clientY * (canvasHeight / canvas.offsetHeight) - rect.top;
-        demo.addAt(x, y);
-      });
-    };
-
-    //Canvas Resize
-    function canvasAdjust() {
-      var canvas = document.getElementById("canvas");
-      var mq = window.innerWidth;
-      if (mq < 1000) {
-        canvas.style.width = (mq - 150) + "px";
-        canvas.style.height = (mq / 1.42) + "px";
+      //Canvas Resize
+      function canvasAdjust() {
+        var canvas = document.getElementById("canvas");
+        var mq = window.innerWidth;
+        if (mq < 1000) {
+          canvas.style.width = (mq - 150) + "px";
+          canvas.style.height = (mq / 1.42) + "px";
+        }
+        else {
+          canvas.style.width = canvasWidth + "px";
+          canvas.style.height = canvasHeight + "px";
+        }
       }
-      else {
-        canvas.style.width = canvasWidth + "px";
-        canvas.style.height = canvasHeight + "px";
-      }
-    }
 
-    canvasAdjust();
-    window.addEventListener("resize", canvasAdjust);
-  </script>
+      canvasAdjust();
+      window.addEventListener("resize", canvasAdjust);
+    </script>
 
 </body>
