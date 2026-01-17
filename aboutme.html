@@ -1,129 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Begin header template -->
-
 <head>
   <meta charset="utf-8">
-  <title>About Me</title>
+  <title>Jared Mayron - About</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+  <!-- Premium Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="/STATIC/images/favicon.ico" />
   <style>
-    @media (min-width: 768px) {
-      body {
-        background-color: #242320;
-      }
-
-      .main {
-        background-color: white;
-        box-shadow: 10px 10px 5px black;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 50px;
-
-        -moz-border-bottomleft: 35px;
-        border-bottom-left-radius: 35px;
-        -moz-border-bottomright: 35px;
-        border-bottom-right-radius: 35px;
-      }
-
-      .collapsable {
-        display: block;
-      }
+    :root {
+      --bg-base: #ffffff;
+      --bg-muted: #f9fafb;
+      --text-main: #111827;
+      --text-secondary: #4b5563;
+      --border-subtle: #e5e7eb;
+      --accent-green: #10b981;
     }
 
-    @media (max-width: 767px) {
-      body {
-        padding-top: 60px;
-      }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-      .main {
-        background-color: white;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
 
-      .collapsable {
-        display: none;
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--bg-base) !important;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-main) !important;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary) !important;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-link.active {
+      color: var(--accent-green) !important;
+      font-weight: 600;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .bio-section h1 {
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .bio-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .social-card:hover {
+      border-color: var(--accent-green);
+      background: white;
+      transform: translateX(4px);
+    }
+
+    .pgp-box {
+      margin-top: 40px;
+      padding: 24px;
+      background: var(--bg-muted);
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    @media (max-width: 868px) {
+      .content-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container main">
-    <!-- Begin navbar template -->
-
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #242320;">
-      <div class="container">
-        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/aboutme.html">About Me</a></li>
-            <li class="nav-item"><a class="nav-link" href="/puck.html">Puck Algorithm</a></li>
-            <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP Translator</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Utilities</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/tracker.html">Web Beacon</a></li>
-                <li><a class="dropdown-item" href="/keylogger.html">Keylogger</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="lead">I'm a security professional for web and security software living in Missouri</h1>
-        <p>
-          I enjoy coming up with simple solutions to complex problems, and coming up with solutions that others have
-          missed.
-          When I write code, I'll do some basic optimization, but I'll leave a bit to be optimized by compiler if it
-          results in cleaner code.
-          My real first language as Java, but I find that I can write more elegant code in Perl, JavaScript, C and
-          Python.<br><br>
-          When I'm not coding I'm enjoying classic film or skiing.
-        <p>
-      </div>
-      <div class="col-md-4">
-        <div class="list-group">
-          <a class="list-group-item" href="STATIC/files/9A3C8302.asc">PGP Key: <span class="float-end">🔒</span></a>
-
-          <a class="list-group-item" href="http://www.linkedin.com/in/jaredmayron/">LinkedIn: <span
-              class="float-end">linkedin.com/in/jaredmayron/</span></a>
-          <a class="list-group-item" href="https://github.com/JaredMayron">GitHub: <span
-              class="float-end">github.com/JaredMayron</span></a>
-        </div>
+  <nav class="navbar navbar-expand-md">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Jared Mayron</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/aboutme.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/puck.html">Puck</a></li>
+          <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP</a></li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 
+  <main class="content-grid">
+    <div class="bio-section">
+      <h1 class="serif display-4">Security professional for web and security software living in Missouri.</h1>
+      <p>I enjoy coming up with simple solutions to complex problems, and identifying solutions that others have
+        overlooked.</p>
+      <p>When I write code, I prioritize elegance and clarity. My focus is on writing code that is easy to read and
+        maintain, while still being performant and secure.</p>
+      <p>Though my first professional language was Java, I find myself most at home in the precision of Perl, the
+        flexibility of JavaScript, the power of C, and the readability of Python.</p>
+      <p>Outside of engineering, I spend my time exploring classic cinema and skiing.</p>
+    </div>
 
-  <!-- Begin tail import template -->
+    <aside>
+      <div class="social-links">
+        <a href="http://www.linkedin.com/in/jaredmayron/" class="social-card">
+          <span class="mono">LinkedIn</span>
+          <span class="text-secondary small">&rarr;</span>
+        </a>
+        <a href="https://github.com/JaredMayron" class="social-card">
+          <span class="mono">GitHub</span>
+          <span class="text-secondary small">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="pgp-box">
+        <h3 class="serif h5 mb-3">PGP Identity</h3>
+        <p class="small text-secondary mb-3">Verify my digital signature or send encrypted messages.</p>
+        <a href="STATIC/files/9A3C8302.asc" class="mono small text-decoration-none" style="color: var(--accent-green);">
+          [9A3C8302.asc]
+        </a>
+        <div class="mt-3 mono x-small text-muted" style="font-size: 0.7rem;">
+          Fingerprint: 9A3C 8302 ...
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="container text-center text-secondary mono py-5 mt-5"
+    style="font-size: 0.75rem; border-top: 1px solid var(--border-subtle);">
+    &copy; 2026 // Jared Mayron // Secure by Design // Minimalist
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function navbarAdjust() {
-      const navbar = document.querySelector('.navbar');
-      if (window.innerWidth < 768) {
-        navbar.classList.add('fixed-top');
-      } else {
-        navbar.classList.remove('fixed-top');
-      }
-    }
-
-    navbarAdjust();
-    window.addEventListener("resize", navbarAdjust);
-  </script>
-
 </body>
 
 </html>

@@ -1,177 +1,277 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Begin header template -->
-
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Jared Mayron - Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+  <!-- Premium Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="/STATIC/images/favicon.ico" />
   <style>
-    @media (min-width: 768px) {
-      body {
-        background-color: #242320;
+    :root {
+      --bg-base: #ffffff;
+      --bg-muted: #f9fafb;
+      --text-main: #111827;
+      --text-secondary: #4b5563;
+      --border-subtle: #e5e7eb;
+      --accent-green: #10b981;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* Navbar Redesign */
+    .navbar {
+      background-color: var(--bg-base) !important;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.5rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-main) !important;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary) !important;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-link.active {
+      color: var(--accent-green) !important;
+      font-weight: 600;
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(180px, auto);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .bento-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bento-card:hover {
+      border-color: var(--accent-green);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .card-hero {
+      grid-column: span 3;
+      grid-row: span 2;
+      background: var(--bg-muted);
+    }
+
+    .card-tall {
+      grid-row: span 2;
+    }
+
+    .card-wide {
+      grid-column: span 2;
+    }
+
+    .card-legacy {
+      background-color: var(--bg-muted);
+      opacity: 0.8;
+    }
+
+    .badge-legacy {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 2px 8px;
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .btn-ui {
+      background: var(--text-main);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      background: #d1d5db;
+    }
+
+    .status-active .status-dot {
+      background: var(--accent-green);
+    }
+
+    .puck-visual {
+      height: 200px;
+      width: 100%;
+      margin-top: 24px;
+      border-radius: 12px;
+      background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjIwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMGI5ODEiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHBhdGggZD0iTTUwIDEwMCBMMTUwIDUwIEwyNTAgMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxMGI5ODEiIHN0cm9rZS1kYXNoYXJyYXk9IjYsNiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+') center no-repeat;
+      border: 1px solid var(--border-subtle);
+    }
+
+    @media (max-width: 992px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .main {
-        background-color: white;
-        box-shadow: 10px 10px 5px black;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 50px;
-
-        -moz-border-bottomleft: 35px;
-        border-bottom-left-radius: 35px;
-        -moz-border-bottomright: 35px;
-        border-bottom-right-radius: 35px;
-      }
-
-      .collapsable {
-        display: block;
+      .card-hero {
+        grid-column: span 2;
       }
     }
 
-    @media (max-width: 767px) {
-      body {
-        padding-top: 60px;
+    @media (max-width: 600px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
       }
 
-      .main {
-        background-color: white;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-
-      .collapsable {
-        display: none;
+      .card-hero,
+      .card-wide {
+        grid-column: span 1;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container main">
-    <!-- Begin navbar template -->
+  <nav class="navbar navbar-expand-md">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">Jared Mayron</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/aboutme.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/puck.html">Puck</a></li>
+          <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #242320;">
-      <div class="container">
-        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/aboutme.html">About Me</a></li>
-            <li class="nav-item"><a class="nav-link" href="/puck.html">Puck Algorithm</a></li>
-            <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP Translator</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Utilities</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/tracker.html">Web Beacon</a></li>
-                <li><a class="dropdown-item" href="/keylogger.html">Keylogger</a></li>
-              </ul>
-            </li>
-          </ul>
+  <header class="container mt-5 pt-4">
+    <h2 class="serif display-3">Webserver Testbed</h2>
+    <p class="mono text-secondary lead">Computational research, legacy tools, and creative engineering.</p>
+  </header>
+
+  <main class="bento-grid">
+    <!-- Puck Algorithm -->
+    <a href="/puck.html" class="bento-card card-hero status-active">
+      <div>
+        <h3 class="serif h2 mb-3">Puck Algorithm</h3>
+        <p class="text-secondary" style="max-width: 500px;">Navigating dynamic disk fields via Delaunay triangulation
+          and greedy DFS. A study in computational geometry.</p>
+        <div class="puck-visual"></div>
+      </div>
+      <div class="mt-4">
+        <span class="btn-ui">EXPLORE DEMO</span>
+      </div>
+    </a>
+
+    <!-- PGP Translator -->
+    <a href="/biometric_word_list_translator.html" class="bento-card card-tall">
+      <div>
+        <h3 class="serif h4">PGP Translator</h3>
+        <p class="small text-secondary mb-4">Biometric Word List implementation for secure voice channel communication.
+        </p>
+        <div class="mono small p-3 bg-white rounded border"
+          style="border-left: 3px solid var(--accent-green) !important;">
+          [Hex] → [Words]
         </div>
       </div>
-    </nav>
-    <div class="p-4 mb-4 bg-light rounded-3">
-      <h2>Jared's Webserver Testbed<br>
-        <small class="text-muted">Orphaned projects, game servers, and random stuff on a couple old machines that I
-          really don't know what
-          to
-          do with</small>
-      </h2>
+      <div class="mt-auto pt-4">
+        <span class="btn-ui w-100 text-center">TRANSLATE</span>
+      </div>
+    </a>
+
+    <!-- Utilities Wide -->
+    <div class="bento-card card-wide">
+      <div>
+        <h3 class="serif h4">Web Utilities</h3>
+        <p class="text-secondary small">Security-focused experiments and deprecated toolsets.</p>
+      </div>
+      <div class="d-flex gap-3 mt-4">
+        <a href="/tracker.html" class="mono small text-decoration-none text-main">Beacon &rarr;</a>
+        <a href="/keylogger.html" class="mono small text-decoration-none text-main">Keylogger &rarr;</a>
+        <a href="/teapot.html" class="mono small text-decoration-none text-main">HTCPCP &rarr;</a>
+      </div>
     </div>
 
+    <!-- Web Beacon -->
+    <a href="/tracker.html" class="bento-card card-legacy">
+      <div>
+        <div class="badge-legacy">Legacy</div>
+        <h3 class="serif h5">Web Beacon</h3>
+        <p class="small text-secondary">Passive tracking and IP geolocation vectors study.</p>
+      </div>
+      <div class="mono small text-secondary"><span class="status-dot"></span>dormant</div>
+    </a>
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">Puck Algorithm Implementation <small>computational geometry problem</small></h3>
-      <p class="lead">Given a field of disks, and given a disk, find a path by which you can move the disk to the edge
-        of
-        the field without having the disk intersect with the other disks.
-        The algorithm uses a delaunay triangulation and a greedy depth first search implementation to come up with with
-        an
-        interactive solution. </p>
-    </div>
+    <!-- Keylogger -->
+    <a href="/keylogger.html" class="bento-card card-legacy">
+      <div>
+        <div class="badge-legacy">Legacy</div>
+        <h3 class="serif h5">Keylogger</h3>
+        <p class="small text-secondary">Experimentation with encrypted DNS exfiltration.</p>
+      </div>
+      <div class="mono small text-secondary"><span class="status-dot"></span>dormant</div>
+    </a>
+  </main>
 
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">PGP Wordlist <small>web translator implementation</small></h3>
-      <p class="lead">The PGP wordlist is used to communicate bytes as a list of words in an unambiguous way via a voice
-        channel. Each of the words represents a byte value, and each byte can be even or odd.
-        The list uses 2 sets of words as a checking mechanism in order to avoid duplicate, removed, or transposed
-        values.
-        The page uses JavaScript to translate between phonetic strings and byte values.
-      </p>
-    </div>
+  <footer class="container text-center text-secondary mono py-5 mt-5"
+    style="font-size: 0.75rem; border-top: 1px solid var(--border-subtle);">
+    &copy; 2026 // Jared Mayron // Secure by Design // Modern Web Standards
+  </footer>
 
-    <br>
-    <h2>Utilities</h2>
-
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">Web Beacon <small>tracker server</small></h3>
-      <p class="lead">Web Beacons (web bug) are small bits of html code that makes a request to this server.
-        The request reveals the IP address of the host, and that ip address can reveal a citywide physical location.<br>
-        This app was based off of a talk that our campus' internal security auditor gave at our school security meet-up
-        called <strong>secure lunch</strong>.
-        Older web bugs have to identify the target by passing in arguments to imported resource (1x1 pixel, invisible
-        image, etc.).
-        This web bug is designed to evade most signature based web bug detection, as it doesn't have a defined signature
-        like many web bugs.
-
-        I had to shut this down when the location API became deprecated.
-      </p>
-    </div>
-
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">Keylogger <small>JavaScript keylogger</small></h3>
-      <p class="lead">Tiny JavaScript keylogger which uses encrypted DNS queries. Had to shut this down during a
-        migration.
-      </p>
-    </div>
-
-
-    <hr class="featurette-divider">
-    <div class="featurette">
-      <h3 class="featurette-heading">Teapot Server <small>fun with the Hyper Text Coffee Pot Control Protocol</small>
-      </h3>
-      <p class="lead">
-        With this server I messed around with the way that bottle sends back headers, using the WSGI HTTPError module
-        within bottle. <a href="http://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">Described as a
-          facetious communications protocol</a> this was one of the ways I got acclimated with the bottle framework. I
-        doubt everything's implemented correctly, but it's a good way to check out the html compliance level of your
-        browser.
-
-        Had to shut this down when I moved to static pages.</p>
-    </div>
-
-    <br>
-  </div> <!--Main-->
-  <!-- Begin tail import template -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function navbarAdjust() {
-      const navbar = document.querySelector('.navbar');
-      if (window.innerWidth < 768) {
-        navbar.classList.add('fixed-top');
-      } else {
-        navbar.classList.remove('fixed-top');
-      }
-    }
-
-    navbarAdjust();
-    window.addEventListener("resize", navbarAdjust);
-  </script>
 </body>
 
 </html>
