@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<!-- Begin header template -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Puck Algorithm Implementation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/STATIC/images/favicon.ico" />
+  <style>
+    @media (min-width: 768px) {
+      body {
+        background-color: #242320;
+      }
+
+      .main {
+        background-color: white;
+        box-shadow: 10px 10px 5px black;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
+
+        -moz-border-bottomleft: 35px;
+        border-bottom-left-radius: 35px;
+        -moz-border-bottomright: 35px;
+        border-bottom-right-radius: 35px;
+      }
+
+      .collapsable {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        padding-top: 60px;
+      }
+
+      .main {
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .collapsable {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container main">
+    <!-- Begin navbar template -->
+
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #242320;">
+      <div class="container">
+        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/aboutme.html">About Me</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/puck.html">Puck Algorithm</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP Translator</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Utilities</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/tracker.html">Web Beacon</a></li>
+                <li><a class="dropdown-item" href="/keylogger.html">Keylogger</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <!--<canvas id="canvas" width="400" height="300" style="border: solid black 1px; cursor: default;"></canvas>-->
+      <canvas id="canvas" width="1000" height="700" style="border: solid black 1px; cursor: default;"></canvas>
+    </div>
+    <div>
+      <div class="container">
+        <input type="button" value="clear" class="btn btn-dark" onclick="demo.clear();" ondblclick="this.onclick();" />
+        <div class="btn-group">
+          <input type="button" value="add 1" class="btn btn-dark" onclick="demo.add(1);" ondblclick="this.onclick();" />
+          <input type="button" value="add 3" class="btn btn-dark" onclick="demo.add(3);" ondblclick="this.onclick();" />
+          <input type="button" value="add 50" class="btn btn-dark" onclick="demo.add(50);"
+            ondblclick="this.onclick();" />
+        </div>
+
+        <!--variable width slider, could not implement-->
+        <!--<input type="range" id="pucksize" min="1" max="25"/><label id="puckLabel"></label>-->
+      </div>
+    </div>
+    <br>
+    <h1>README</h1>
+
+    <h2>Overview</h2>
+    <p class="lead"><strong>Given a field of disks, and given a disk, find a path by which you can move the disk to the
+        edge of the field without having the disk intersect with the other disks.<strong></p>
+
+    <h2>Usage</h2>
+    <p class="lead">
+      Click the add buttons to add any number of disks to canvas. Click the clear button to remove all drawings from the
+      canvas. Click the canvas to place a starting puck at any given location, when you click another location that puck
+      ceases to be the starting puck and the newest puck created becomes the starting puck.
+    </p>
+    <h2>Implementation</h2>
+    <p class="lead">
+      This program is implemented entirely in JavaScript with 3 files:
+    <ul>
+      <li>Canvas.js: Basic drawing functions</li>
+      <li>Delaunay.js: Creates the delaunay triangulation out of the field of pucks</li>
+      <li>Puck.js: Builds an iterable map and runs a modified depth first search to find a path out of the field of
+        pucks
+      </li>
+    </ul>
+    </p>
+    <p class="lead">
+      There's JavaScript that serves a wrapper in the main page, but it mostly serves as a wrapper for these functions
+      (mostly the Demo.render() method). In general during each render the program:
+    <ol>
+      <li>Delaunay.js creates a raw triangulation with global.triangulate</li>
+      <li>Puck.js creates a mappable data structure with global.build, including discovering the convex hull</li>
+      <li>Puck.js paths through the data structure, producing a path with global.path</li>
+      <li>This pages calls Canvas.js to render the edges, fills in the triangles, and renders the path to end</li>
+    </ol>
+    </p>
+    <h2>Coloring</h2>
+    <p class="lead">
+    <ul>
+      <li>The white space is the space outside of the arrangement</li>
+      <li>Green Edges are passable by the puck</li>
+      <li>Red Edges are unpassable by the puck</li>
+      <li>Orange Edges are passable edges by the puck and are on the edge of the arrangement</li>
+      <li>Blue Pucks are pucks to be pathed around</li>
+      <li>The Red puck is the starting puck</li>
+      <li>Green Triangles are passable</li>
+      <li>Red Triangles are not passable</li>
+      <li>Purple Triangles are explored</li>
+      <li>The Gray line is the path out of the arrangement (the puck can legally exist in any triangle intersected by
+        it,
+        most of the time it is the correct path [see bugs])</li>
+    </ul>
+    </p>
+    <h2>Why does it work?</h2>
+    <p class="lead">
+      Every delaunay edge is the closest path from one point to another, and each circumcircle is equidistant between
+      each
+      of the points. Futhermore each triangle's circumcircle does not contain any other point. What that means is a puck
+      can pass between 2 other points if there's a delaunay edge between them and the puck can fit between them. A puck
+      can pass through a triangle if it can fit in the circumcenter's radius. Due to the fact this is a delaunay
+      triangulation, those points on the edges are the farthest away from adjacent disks. Circumcircle centers are the
+      farthest away from the vertices of the delaunay triangulation.
+    </p>
+    <p class="lead">
+      I'm able to determine the convex hull in O(n) time since I kept track of neighbors. Each edge has between 1 and 2
+      neighbors in the triangulation. If there exists a triangle that has 1 neighbor and it were not on the convex hull,
+      then there must be an outer edge not on the convex hull. If there is an outer edge that not on the convex hull, it
+      must be in a hole. Since this triangulation does not include holes, then any edge with one neighbor has to be on
+      the
+      convex hull.
+    </p>
+    <h2>How fast is it?</h2>
+    <p class="lead">
+    <ol>
+      <li>The triangulation runs in O(n log n) time since it uses the edge flip method and there are only O(n log n)
+        edge
+        flips possible.</li>
+      <li>Build takes O(3n) time since it iterates through all the triangles and vertices in constant time. The convex
+        hull is extracted in O(3n) time since each edge has a neighbor and the number can be checked in O(3n) time.</li>
+      <li>Pathing does not explore any triangle more than once, therefore it runs in O(n) time. The map is explored with
+        minimum edge distance heuristic (justAnotherGreedyHeuristic) so it's faster than that most of the time.</li>
+      <li>Rendering takes in O(n + m) time since it's limited by the size of the path and the number of triangles. Since
+        the length of the path is at maximum a factor of the number of triangles, it total it runs in O(n) time.</li>
+      <li> Space worst case is the limiting factor of O(n^2) since edges and vertices are related and there can be
+        equal
+        number of both. This is pretty close to an impossibility although I can not prove it formally. Google Chrome
+        usually gets slow for me at about 250 disks.</li>
+    </ol>
+    </p>
+    <h2>Design Decisions</h2>
+    <p class="lead">
+      I modified the existing delaunay triangulation methods by adding some methods to the api like midpoint. But more
+      importantly I've fixed an issue that would have delaunay.js run in O(n^2) time in exchange for adding O(2n) space,
+      which is neglible since delaunay.js takes up O(n) space originally. I did this by replacing the arrays with
+      custom-built sets.
+    </p>
+    <p class="lead">
+      I've used sets whenever possible so that duplicate detection can be done in O(1) time. I've stored a radius in
+      each
+      vertex for the possibility of having variable sized pucks, something that I was not able to achieve. Each I split
+      puck into 2 methods so they could possibly split during certain operations, another optimization I was not able to
+      achieve.
+    </p>
+    <h5>Check out the code for comments and more information</h5>
+    <h2>Bugs</h2>
+    <p class="lead">
+    <ol>
+      <li>Double lines may render because of misalignments in canvas.js (sometime noticable on the convex hull)</li>
+      <li>The path line will get to close to the vertex of an obtuse triangle sometimes, and delaunay.js will ignore
+        triangles so obtuse that they're basically canonical</li>
+      <li>It's on the web, so things sometimes don't load at the same time</li>
+    </ol>
+    </p>
+    <h2>Credits</h2>
+    <p class="lead">
+      Credits to Google for Canvas.js, and Joshua Bell for the modified Delaunay.js
+    </p>
+    <br>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/publicdomain/"><img alt="Creative Commons License"
+          style="border-width:0" src="http://i.creativecommons.org/l/publicdomain/88x31.png" /></a><br />This work is
+      dedicated to the <a rel="license" href="http://creativecommons.org/licenses/publicdomain/">Public Domain</a>.
+    </p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function navbarAdjust() {
+      const navbar = document.querySelector('.navbar');
+      if (window.innerWidth < 768) {
+        navbar.classList.add('fixed-top');
+      } else {
+        navbar.classList.remove('fixed-top');
+      }
+    }
+
+    navbarAdjust();
+    window.addEventListener('resize', navbarAdjust);
+  </script>
+
+  <script type="text/javascript" src="/STATIC/javascript/canvas.js"></script>
+  <script type="text/javascript" src="/STATIC/javascript/delaunay.js"></script>
+  <script type="text/javascript" src="/STATIC/javascript/puck.js"></script>
+  <script type="text/javascript">
+
+    var pucksize = 13;
+    var canvasWidth = 1000;
+    var canvasHeight = 700;
+
+    function Demo() {
+      this.vertices = [];
+      this.triangles = null;
+
+      this.startPuck = null;
+      this.placePuck = true;
+      this.path = [];
+
+      this.render = {};
+
+      //Adds the target puck, replaces the old target puck
+      this.addAt = function (x, y) {
+
+        //If the puck is a target puck is updated at render;
+        var vertex = new Vertex(x, y);
+        vertex.radius = pucksize;
+        if (this.placePuck) {
+          this.startPuck = vertex;
+        }
+        this.vertices.push(vertex);
+        this.render();
+      };
+
+      //Adds a series of pucks
+      this.add = function (n) {
+        var canvas = document.getElementById('canvas');
+        var w = Number(canvas.width), h = Number(canvas.height);
+        var inset = 25;
+
+        for (var i = 0; i < n; i++) {
+          var vertex = new Vertex(Math.random() * (w - 2 * inset) + inset, Math.random() * (h - 2 * inset) + inset);
+          vertex.radius = pucksize;
+          this.vertices.push(vertex);
+        }
+        this.render();
+      };
+
+      this.clear = function () {
+        this.triangles = [];
+        this.vertices = [];
+        this.path = [];
+        this.render();
+      }
+
+      //Renders the complete diagram
+      this.render = function () {
+
+
+        var canvas = document.getElementById('canvas');
+        if (!canvas.getContext)
+          return;
+
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, Number(canvas.width), Number(canvas.height));
+
+        if (this.vertices.length == 0) { return; }
+
+        //Creates the delaunay triangulation
+        this.triangles = triangulate(this.vertices);
+
+        if (this.triangles == null) { return; }
+
+        //Build the mesh
+        this.triangles = build(this.triangles, this.startPuck, pucksize, canvas);
+
+        //Find the path
+        if (this.startPuck != null) {
+          this.path = path(this.triangles, this.startPuck);
+        }
+
+
+
+
+        //Draw step
+        this.triangles.forEach(function (triangle) {
+
+          //Renders each edge
+          var edges = triangle.edges;
+          for (var i = 0; i < 3; i++) {
+
+            var edge = edges[i];
+            context.beginPath();
+            context.moveTo(edge.v0.x, edge.v0.y);
+            context.lineTo(edge.v1.x, edge.v1.y);
+            context.closePath();
+
+
+            //Renders the passable sections of the convex hull
+            if (edge.passable && edge.outside) {
+              context.strokeStyle = "#FF7E00";
+              //Renders passable edges
+            } else if (edge.passable) {
+              context.strokeStyle = "#00571B";
+            } else {
+              context.strokeStyle = "#660200";
+            }
+
+
+            context.lineWidth = 10;
+            context.stroke();
+          }
+
+
+          context.beginPath();
+          context.moveTo(triangle.v0.x, triangle.v0.y);
+          context.lineTo(triangle.v1.x, triangle.v1.y);
+          context.lineTo(triangle.v2.x, triangle.v2.y);
+          context.closePath();
+
+          //Fills the triangle if it's explored, passable or unpassable
+          if (triangle.explored) {
+            context.fillStyle = "#BE00FF";
+            context.fill();
+          } else if (triangle.passable) {
+            context.fillStyle = "#00FF4E";
+            context.fill();
+          } else {
+            context.fillStyle = "#FFA8A5";
+            context.fill();
+          }
+
+
+
+          // Display circumcircles
+          // context.beginPath();
+          // context.arc( triangle.center.x, triangle.center.y, triangle.radius, 0, Math.PI*2, true );
+          // context.closePath();
+          // context.strokeStyle= "#808080";
+          // context.stroke();
+        });
+
+        //Renders each of the vertices
+        this.vertices.forEach(function (vertex) {
+          var radius = vertex.radius;
+          if (!radius) { radius = pucksize; }
+          context.beginPath();
+          context.arc(vertex.x, vertex.y, radius, 0, Math.PI * 2, true);
+          context.closePath();
+
+          //Renders
+          if (vertex.startPuck) {
+            context.fillStyle = "#FF0F00";
+          } else {
+            context.fillStyle = "#4D4B7F";
+          }
+
+          context.fill();
+        });
+
+        if (this.path.length > 0) {
+          var prevVertex = this.path[0];
+          context.beginPath();
+          context.moveTo(prevVertex.x, prevVertex.y);
+          for (var index = 1; index < this.path.length; index++) {
+            var vertex = this.path[index];
+            context.lineTo(vertex.x, vertex.y);
+
+          }
+          context.lineWidth = 3;
+          context.strokeStyle = "#A0A0B0";
+          context.stroke();
+        }
+      };
+
+
+    };
+
+    var demo = new Demo();
+    //Slider code, removed
+    // var pucksize = parseInt($("#pucksize").val());
+    // $("#puckLabel").text(pucksize);
+
+    // $("#pucksize").change( function(){
+    //   pucksize = $("#pucksize").val();
+    //   $("#puckLabel").text(pucksize);
+    //   if(demo.startPuck != null){demo.startPuck.radius=pucksize;}
+    //   demo.render();
+    //   });
+    window.onload = function () {
+      var canvas = document.getElementById("canvas");
+      canvas.addEventListener("click", function (e) {
+        e = e ? e : window.event;
+        var rect = this.getBoundingClientRect();
+
+        var x = e.clientX * (canvasWidth / canvas.offsetWidth) - rect.left;
+        var y = e.clientY * (canvasHeight / canvas.offsetHeight) - rect.top;
+        demo.addAt(x, y);
+      });
+    };
+
+    //Canvas Resize
+    function canvasAdjust() {
+      var canvas = document.getElementById("canvas");
+      var mq = window.innerWidth;
+      if (mq < 1000) {
+        canvas.style.width = (mq - 150) + "px";
+        canvas.style.height = (mq / 1.42) + "px";
+      }
+      else {
+        canvas.style.width = canvasWidth + "px";
+        canvas.style.height = canvasHeight + "px";
+      }
+    }
+
+    canvasAdjust();
+    window.addEventListener("resize", canvasAdjust);
+  </script>
+
+</body>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Begin header template -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/STATIC/images/favicon.ico" />
+  <style>
+    @media (min-width: 768px) {
+      body {
+        background-color: #242320;
+      }
+
+      .main {
+        background-color: white;
+        box-shadow: 10px 10px 5px black;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
+
+        -moz-border-bottomleft: 35px;
+        border-bottom-left-radius: 35px;
+        -moz-border-bottomright: 35px;
+        border-bottom-right-radius: 35px;
+      }
+
+      .collapsable {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        padding-top: 60px;
+      }
+
+      .main {
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .collapsable {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container main">
+    <!-- Begin navbar template -->
+
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #242320;">
+      <div class="container">
+        <a class="navbar-brand" href="/index.html">Jared Testbed</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/aboutme.html">About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="/puck.html">Puck Algorithm</a></li>
+            <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP Translator</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Utilities</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/tracker.html">Web Beacon</a></li>
+                <li><a class="dropdown-item" href="/keylogger.html">Keylogger</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="p-4 mb-4 bg-light rounded-3">
+      <h2>Jared's Webserver Testbed<br>
+        <small class="text-muted">Orphaned projects, game servers, and random stuff on a couple old machines that I
+          really don't know what
+          to
+          do with</small>
+      </h2>
+    </div>
+
+
+    <hr class="featurette-divider">
+    <div class="featurette">
+      <h3 class="featurette-heading">Puck Algorithm Implementation <small>computational geometry problem</small></h3>
+      <p class="lead">Given a field of disks, and given a disk, find a path by which you can move the disk to the edge
+        of
+        the field without having the disk intersect with the other disks.
+        The algorithm uses a delaunay triangulation and a greedy depth first search implementation to come up with with
+        an
+        interactive solution. </p>
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="featurette">
+      <h3 class="featurette-heading">PGP Wordlist <small>web translator implementation</small></h3>
+      <p class="lead">The PGP wordlist is used to communicate bytes as a list of words in an unambiguous way via a voice
+        channel. Each of the words represents a byte value, and each byte can be even or odd.
+        The list uses 2 sets of words as a checking mechanism in order to avoid duplicate, removed, or transposed
+        values.
+        The page uses JavaScript to translate between phonetic strings and byte values.
+      </p>
+    </div>
+
+    <br>
+    <h2>Utilities</h2>
+
+    <hr class="featurette-divider">
+    <div class="featurette">
+      <h3 class="featurette-heading">Web Beacon <small>tracker server</small></h3>
+      <p class="lead">Web Beacons (web bug) are small bits of html code that makes a request to this server.
+        The request reveals the IP address of the host, and that ip address can reveal a citywide physical location.<br>
+        This app was based off of a talk that our campus' internal security auditor gave at our school security meet-up
+        called <strong>secure lunch</strong>.
+        Older web bugs have to identify the target by passing in arguments to imported resource (1x1 pixel, invisible
+        image, etc.).
+        This web bug is designed to evade most signature based web bug detection, as it doesn't have a defined signature
+        like many web bugs.
+
+        I had to shut this down when the location API became deprecated.
+      </p>
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="featurette">
+      <h3 class="featurette-heading">Keylogger <small>JavaScript keylogger</small></h3>
+      <p class="lead">Tiny JavaScript keylogger which uses encrypted DNS queries. Had to shut this down during a
+        migration.
+      </p>
+    </div>
+
+
+    <hr class="featurette-divider">
+    <div class="featurette">
+      <h3 class="featurette-heading">Teapot Server <small>fun with the Hyper Text Coffee Pot Control Protocol</small>
+      </h3>
+      <p class="lead">
+        With this server I messed around with the way that bottle sends back headers, using the WSGI HTTPError module
+        within bottle. <a href="http://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">Described as a
+          facetious communications protocol</a> this was one of the ways I got acclimated with the bottle framework. I
+        doubt everything's implemented correctly, but it's a good way to check out the html compliance level of your
+        browser.
+
+        Had to shut this down when I moved to static pages.</p>
+    </div>
+
+    <br>
+  </div> <!--Main-->
+  <!-- Begin tail import template -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function navbarAdjust() {
+      const navbar = document.querySelector('.navbar');
+      if (window.innerWidth < 768) {
+        navbar.classList.add('fixed-top');
+      } else {
+        navbar.classList.remove('fixed-top');
+      }
+    }
+
+    navbarAdjust();
+    window.addEventListener("resize", navbarAdjust);
+  </script>
+</body>
+
+</html>
