@@ -19,6 +19,13 @@
       --card-bg: #ffffff;
     }
 
+    .text-truncate-line {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+
     [data-theme='dark'] {
       --bg-base: #0f172a;
       --bg-muted: #1e293b;
@@ -334,7 +341,7 @@
       <div>
         <div class="badge-legacy">Legacy</div>
         <h3 class="serif h6">Web Beacon</h3>
-        <p class="small text-secondary mb-1">Passive tracking study.</p>
+        <p class="small text-secondary mb-1 text-truncate-line">Passive tracking study.</p>
       </div>
       <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
     </a>
@@ -344,7 +351,7 @@
       <div>
         <div class="badge-legacy">Legacy</div>
         <h3 class="serif h6">Keylogger</h3>
-        <p class="small text-secondary mb-1">DNS exfiltration.</p>
+        <p class="small text-secondary mb-1 text-truncate-line">DNS exfiltration.</p>
       </div>
       <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
     </a>
@@ -355,7 +362,7 @@
       <div>
         <div class="badge-legacy">Deactivated Mockup</div>
         <h3 class="serif h6">Fire-In-The-Hole</h3>
-        <p class="small text-secondary mb-1">Predictive wait-time tracking.</p>
+        <p class="small text-secondary mb-1 text-truncate-line">Wait time tracking</p>
       </div>
       <div class="mono small text-secondary d-flex align-items-center" style="font-size: 0.65rem;">
         <span class="status-dot status-heat"></span>mock data
