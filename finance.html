@@ -151,19 +151,19 @@
 
         /* Theme-aware screenshots */
         .light-only {
-            display: block;
+            display: block !important;
         }
 
         .dark-only {
-            display: none;
+            display: none !important;
         }
 
         [data-theme='dark'] .light-only {
-            display: none;
+            display: none !important;
         }
 
         [data-theme='dark'] .dark-only {
-            display: block;
+            display: block !important;
         }
 
         /* Mocked data notice */
@@ -370,12 +370,9 @@
             <p class="lead">An end-to-end personal finance tracking system that aggregates financial data from multiple
                 sources into interactive dashboards.</p>
             <div class="d-flex justify-content-center gap-3 mt-4">
-                <a href="#" class="github-link mt-0">
-                    EXPLORE DEMO
-                </a>
-                <a href="#" class="github-link mt-0"
-                    style="background: var(--bg-muted); color: var(--text-main); border: 1px solid var(--border-subtle);">
-                    VIEW PUBLIC MOCKUPS
+                <a href="https://www.evidence.studio/org_01KCNDDX3PYPNT5HNPSZQXZPKV/net-worth-mock/cash-reserves"
+                    target="_blank" rel="noopener" class="github-link mt-0">
+                    VIEW DEMO
                 </a>
                 <a href="https://github.com/JaredMayron/atlas-cannonball" target="_blank" rel="noopener"
                     class="github-link mt-0"
@@ -505,7 +502,8 @@
         <section style="margin-top: 60px;">
             <h2 class="section-title">Security Posture</h2>
             <p class="text-secondary">
-                The system includes a comprehensive STRIDE-based threat model covering spoofing, tampering, repudiation,
+                The system includes agent-based automated STRIDE-based threat model covering spoofing, tampering,
+                repudiation,
                 information disclosure, denial of service, and elevation of privilege risks.
                 Key mitigations include OIDC authentication for Cloud Run jobs, IAM-based access control following the
                 Principle of Least Privilege, and parameterized queries to prevent SQL injection.
