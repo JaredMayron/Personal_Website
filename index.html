@@ -7,7 +7,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/STATIC/images/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="STATIC/images/favicon.svg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
@@ -136,9 +136,92 @@
       grid-column: span 2;
     }
 
+    .card-3w {
+      grid-column: span 3;
+    }
+
+    .card-4w {
+      grid-column: span 4;
+    }
+
+    /* Legacy Rail - Horizontal Scrolling Container */
+    .legacy-rail {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 8px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-subtle) transparent;
+    }
+
+    .legacy-rail::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .legacy-rail::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .legacy-rail::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 3px;
+    }
+
+    .legacy-rail::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+
+    .legacy-mini-card {
+      flex: 0 0 180px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      opacity: 0.8;
+    }
+
+    .legacy-mini-card:hover {
+      border-color: var(--accent-green);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .legacy-mini-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .legacy-mini-card p {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
     .card-legacy {
       background-color: var(--bg-muted);
       opacity: 0.8;
+    }
+
+    /* Theme-aware image visibility */
+    .light-only {
+      display: block;
+    }
+
+    .dark-only {
+      display: none;
+    }
+
+    [data-theme='dark'] .light-only {
+      display: none;
+    }
+
+    [data-theme='dark'] .dark-only {
+      display: block;
     }
 
     .badge-legacy {
@@ -231,7 +314,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .card-hero-3w {
+      .card-hero-3w,
+      .card-4w {
         grid-column: span 2;
       }
     }
@@ -249,6 +333,8 @@
       .card-hero-3w,
       .card-tall-1w,
       .card-wide,
+      .card-3w,
+      .card-4w,
       .card-1w {
         grid-column: span 1;
         grid-row: span 1;
@@ -304,6 +390,7 @@
           <li class="nav-item"><a class="nav-link" href="/aboutme.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="/puck.html">Puck</a></li>
           <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP</a></li>
+          <li class="nav-item"><a class="nav-link" href="/finance.html">Finance</a></li>
           <li class="nav-item">
             <button id="theme-toggle" class="btn btn-link nav-link order-last p-2" aria-label="Toggle theme">
               <svg id="theme-toggle-dark-icon" class="d-none" width="18" height="18" viewBox="0 0 20 20"
@@ -324,25 +411,45 @@
   </nav>
 
   <main class="bento-grid" style="margin-top: 20px;">
-    <!-- Row 1: Puck (3W) & PGP (1W) (2H) -->
-    <!-- Puck Algorithm -->
-    <a href="/puck.html" class="bento-card card-hero-3w status-active">
+    <!-- Row 1: Finance Dashboard (3W x 2H) & About Me (1W x 2H) -->
+    <!-- Finance Dashboard - HERO -->
+    <a href="/finance.html" class="bento-card card-hero-3w status-active">
       <div>
-        <h3 class="serif h2 mb-3">Puck Algorithm</h3>
-        <p class="text-secondary text-truncate-line" style="max-width: 600px;">Navigating dynamic disk fields via
-          Delaunay triangulation and greedy DFS.</p>
-        <div class="puck-visual"></div>
+        <h3 class="serif h2 mb-3">Finance Dashboard</h3>
+        <p class="text-secondary text-truncate-line" style="max-width: 600px;">End-to-end personal finance tracking
+          system with automated data pipelines, BigQuery storage, and interactive Evidence dashboards.</p>
+        <div class="finance-visual mt-4"
+          style="height: 140px; display: flex; align-items: center; justify-content: center;">
+          <img src="STATIC/images/finance_donut_light.svg" alt="Net Worth Chart" class="light-only"
+            style="height: 100%;">
+          <img src="STATIC/images/finance_donut_dark.svg" alt="Net Worth Chart" class="dark-only" style="height: 100%;">
+        </div>
       </div>
-      <div class="mt-4">
-        <span class="btn-ui">EXPLORE DEMO</span>
+      <div class="mt-4 d-flex justify-content-between align-items-center">
+        <span class="btn-ui">VIEW DASHBOARDS</span>
+        <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"
+            style="background: var(--accent-green);"></span>active</div>
       </div>
     </a>
 
+    <!-- About Me - Tall Card -->
+    <a href="/aboutme.html" class="bento-card card-tall-1w">
+      <div>
+        <h3 class="serif h5">About Me</h3>
+        <p class="small text-secondary mb-4">Security professional focusing on elegance and simple solutions to complex
+          problems.</p>
+      </div>
+      <div class="mt-auto pt-3">
+        <span class="btn-ui w-100 text-center" style="font-size: 0.7rem;">READ MORE</span>
+      </div>
+    </a>
+
+    <!-- Row 2: PGP (1W) & Puck (3W) -->
     <!-- PGP Translator -->
-    <a href="/biometric_word_list_translator.html" class="bento-card card-tall-1w">
+    <a href="/biometric_word_list_translator.html" class="bento-card card-1w">
       <div>
         <h3 class="serif h5">PGP Translator</h3>
-        <p class="small text-secondary mb-4">Voice channel security.</p>
+        <p class="small text-secondary mb-3">Voice channel security.</p>
         <div class="mono small p-2 pgp-preview-box rounded border"
           style="border-left: 3px solid var(--accent-green) !important; font-size: 0.7rem;">
           [Hex] → [Words]
@@ -353,62 +460,50 @@
       </div>
     </a>
 
-    <!-- Row 2: About Me (2W), Beacon (1W), FITH (1W) -->
-    <!-- Biography Card -->
-    <div class="bento-card card-wide">
+    <!-- Puck Algorithm -->
+    <a href="/puck.html" class="bento-card card-3w status-active">
       <div>
-        <h3 class="serif h4">About Me</h3>
-        <p class="text-secondary small text-truncate-line">Security professional focusing on elegance and simple
-          solutions to complex problems.</p>
+        <h3 class="serif h4 mb-2">Puck Algorithm</h3>
+        <p class="text-secondary small text-truncate-line">Navigating dynamic disk fields via Delaunay triangulation
+          and greedy DFS.</p>
+        <div class="puck-visual" style="height: 100px; margin-top: 16px;"></div>
       </div>
-      <div class="mt-4">
-        <a href="/aboutme.html" class="mono small text-decoration-none text-main">Read More &rarr;</a>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="btn-ui" style="font-size: 0.7rem;">EXPLORE DEMO</span>
+        <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"
+            style="background: var(--accent-green);"></span>active</div>
+      </div>
+    </a>
+
+    <!-- Row 3: Legacy & Research Rail (4W) -->
+    <div class="bento-card card-4w" style="padding: 24px;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="serif h6 mb-0" style="color: var(--text-secondary);">Legacy & Research</h4>
+        <span class="mono small" style="font-size: 0.6rem; color: var(--text-secondary);">← scroll →</span>
+      </div>
+      <div class="legacy-rail">
+        <a href="https://jaredmayron.github.io/fireinthehole/" target="_blank" class="legacy-mini-card">
+          <div class="badge-legacy" style="margin-bottom: 8px;">Mockup</div>
+          <h4>Fire-In-The-Hole</h4>
+          <p>Wait time tracking</p>
+        </a>
+        <a href="/tracker.html" class="legacy-mini-card">
+          <div class="badge-legacy" style="margin-bottom: 8px;">Legacy</div>
+          <h4>Web Beacon</h4>
+          <p>Passive tracking study</p>
+        </a>
+        <a href="/keylogger.html" class="legacy-mini-card">
+          <div class="badge-legacy" style="margin-bottom: 8px;">Legacy</div>
+          <h4>Keylogger</h4>
+          <p>DNS exfiltration</p>
+        </a>
+        <a href="/archive/old-site/index.html" class="legacy-mini-card">
+          <div class="badge-legacy" style="margin-bottom: 8px;">Archived</div>
+          <h4>Old Site</h4>
+          <p>Previous version</p>
+        </a>
       </div>
     </div>
-
-    <!-- Fire-In-The-Hole -->
-    <a href="https://jaredmayron.github.io/fireinthehole/" target="_blank"
-      class="bento-card card-1w card-legacy card-fith">
-      <div>
-        <div class="badge-legacy">Deactivated Mockup</div>
-        <h3 class="serif h6">Fire-In-The-Hole</h3>
-        <p class="small text-secondary mb-1 text-truncate-line">Wait time tracking.</p>
-      </div>
-      <div class="mono small text-secondary d-flex align-items-center" style="font-size: 0.65rem;">
-        <span class="status-dot status-heat"></span>mock data
-      </div>
-    </a>
-
-    <!-- Web Beacon -->
-    <a href="/tracker.html" class="bento-card card-1w card-legacy">
-      <div>
-        <div class="badge-legacy">Legacy</div>
-        <h3 class="serif h6">Web Beacon</h3>
-        <p class="small text-secondary mb-1 text-truncate-line">Passive tracking study.</p>
-      </div>
-      <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
-    </a>
-
-    <!-- Row 3: Keylogger (1W) -->
-    <!-- Keylogger -->
-    <a href="/keylogger.html" class="bento-card card-1w card-legacy">
-      <div>
-        <div class="badge-legacy">Legacy</div>
-        <h3 class="serif h6">Keylogger</h3>
-        <p class="small text-secondary mb-1 text-truncate-line">DNS exfiltration.</p>
-      </div>
-      <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
-    </a>
-
-    <!-- Old Site Archive -->
-    <a href="/archive/old-site/index.html" class="bento-card card-1w card-legacy">
-      <div>
-        <div class="badge-legacy">Archived</div>
-        <h3 class="serif h6">Old Site</h3>
-        <p class="small text-secondary mb-1 text-truncate-line">Previous website version.</p>
-      </div>
-      <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>archived</div>
-    </a>
   </main>
 
   <footer class="container text-center text-secondary mono py-5 mt-5"

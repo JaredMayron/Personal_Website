@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Donut Chart - Light Mode -->
+  <g transform="translate(100, 100)">
+    <!-- Investment (largest, ~60%) - Purple/Blue -->
+    <path d="M 0 -70 A 70 70 0 1 1 -49.5 49.5 L -35.4 35.4 A 50 50 0 1 0 0 -50 Z" fill="#6366f1"/>
+    <!-- Condo (~20%) - Teal -->
+    <path d="M -49.5 49.5 A 70 70 0 0 1 -70 0 L -50 0 A 50 50 0 0 0 -35.4 35.4 Z" fill="#14b8a6"/>
+    <!-- Cash (~12%) - Green -->
+    <path d="M -70 0 A 70 70 0 0 1 -35 -60.6 L -25 -43.3 A 50 50 0 0 0 -50 0 Z" fill="#10b981"/>
+    <!-- Car (~8%) - Orange -->
+    <path d="M -35 -60.6 A 70 70 0 0 1 0 -70 L 0 -50 A 50 50 0 0 0 -25 -43.3 Z" fill="#f59e0b"/>
+  </g>
+  <!-- Labels -->
+  <text x="160" y="140" font-family="Inter, sans-serif" font-size="11" fill="#6366f1">Investment</text>
+  <text x="20" y="110" font-family="Inter, sans-serif" font-size="11" fill="#14b8a6">Condo</text>
+  <text x="35" y="60" font-family="Inter, sans-serif" font-size="11" fill="#10b981">Cash</text>
+  <text x="95" y="35" font-family="Inter, sans-serif" font-size="11" fill="#f59e0b">Car</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg width="800" height="950" viewBox="0 0 800 950" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Marker for arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
+    </marker>
+  </defs>
+
+  <!-- External Sources Container -->
+  <rect x="40" y="20" width="720" height="220" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+  <text x="400" y="45" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748B">External Sources</text>
+  
+  <!-- Blocks inside External Sources (Deepest Dark Tones for Legibility) -->
+  <rect x="100" y="70" width="160" height="40" rx="4" fill="#1E293B" />
+  <text x="180" y="95" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Individual Banks</text>
+  
+  <rect x="320" y="70" width="160" height="40" rx="4" fill="#1E293B" />
+  <text x="400" y="95" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Credit Cards</text>
+  
+  <rect x="540" y="70" width="160" height="40" rx="4" fill="#1E293B" />
+  <text x="620" y="95" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Investment Portfolios</text>
+  
+  <rect x="210" y="140" width="160" height="40" rx="4" fill="#1E293B" />
+  <text x="290" y="165" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Real Estate</text>
+  
+  <rect x="430" y="140" width="160" height="40" rx="4" fill="#1E293B" />
+  <text x="510" y="165" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Other Assets</text>
+
+  <!-- Multiple Arrows to PocketSmith -->
+  <g style="stroke:#94A3B8; stroke-width:1.2; fill:none;" marker-end="url(#arrow)">
+    <path d="M180 110 Q180 300 395 348" />
+    <path d="M400 110 L400 348" />
+    <path d="M620 110 Q620 300 405 348" />
+    <path d="M290 180 Q290 300 397 348" />
+    <path d="M510 180 Q510 300 403 348" />
+  </g>
+  <text x="410" y="270" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">Plaid / Yodlee</text>
+
+  <!-- Aggregation Container -->
+  <rect x="280" y="310" width="240" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+  <text x="400" y="335" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748B">Aggregation</text>
+  <rect x="320" y="350" width="160" height="40" rx="20" fill="#6B2C81" />
+  <text x="400" y="375" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">PocketSmith</text>
+
+  <!-- Connection to Automation -->
+  <path d="M400 420 L400 478" stroke="#94A3B8" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+  <text x="408" y="450" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">REST API</text>
+
+  <!-- Automation Container -->
+  <rect x="280" y="480" width="240" height="150" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+  <text x="400" y="505" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748B">Transformation</text>
+  
+  <rect x="320" y="530" width="160" height="40" rx="4" fill="#4285F4" />
+  <text x="400" y="555" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">GCP Cloud Run</text>
+  
+  <text x="400" y="590" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-style="italic" fill="#64748B">Python / Pandas</text>
+
+  <!-- Connection to Warehouse -->
+  <path d="M400 630 L400 688" stroke="#94A3B8" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+  <text x="408" y="660" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">Load</text>
+
+  <!-- Data Warehouse Container -->
+  <rect x="280" y="690" width="240" height="100" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+  <text x="400" y="715" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748B">Data Warehouse</text>
+  <rect x="320" y="730" width="160" height="40" rx="20" fill="#4285F4" />
+  <text x="400" y="755" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">BigQuery</text>
+
+  <!-- Connection to Visualization -->
+  <path d="M400 790 L400 848" stroke="#94A3B8" stroke-width="1.5" fill="none" marker-end="url(#arrow)" />
+  <text x="408" y="825" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">BigQuery API</text>
+
+  <!-- Visualization Container -->
+  <rect x="180" y="850" width="440" height="100" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2" />
+  <text x="400" y="875" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#64748B">Visualization</text>
+  
+  <rect x="200" y="890" width="190" height="40" rx="4" fill="#334155" />
+  <text x="295" y="915" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Net Worth Dashboard</text>
+  
+  <rect x="410" y="890" width="190" height="40" rx="4" fill="#334155" />
+  <text x="505" y="915" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Cash Reserves Dashboard</text>
+</svg>

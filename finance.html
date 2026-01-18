@@ -1,0 +1,541 @@
+<head>
+    <meta charset="utf-8">
+    <title>Jared Mayron - Finance Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="LeSNXn7r_ufhN07mNwGhAY8HMHMktSbIVcmNx_UmdVc" />
+    <meta name="description"
+        content="End-to-end personal finance tracking system using PocketSmith, GCP Cloud Run, BigQuery, and Evidence Studio dashboards.">
+    <!-- Premium Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="STATIC/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #ffffff;
+            --bg-muted: #f9fafb;
+            --text-main: #111827;
+            --text-secondary: #4b5563;
+            --border-subtle: #e5e7eb;
+            --accent-green: #10b981;
+            --card-bg: #ffffff;
+        }
+
+        [data-theme='dark'] {
+            --bg-base: #0f172a;
+            --bg-muted: #1e293b;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-subtle: #334155;
+            --accent-green: #10b981;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding-bottom: 80px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-base) !important;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1.5rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary) !important;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-link.active {
+            color: var(--accent-green) !important;
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section .lead {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-green);
+            display: inline-block;
+        }
+
+        /* Screenshots Gallery */
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .screenshot-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .screenshot-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            padding: 16px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .screenshot-caption strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Theme-aware screenshots */
+        .light-only {
+            display: block;
+        }
+
+        .dark-only {
+            display: none;
+        }
+
+        [data-theme='dark'] .light-only {
+            display: none;
+        }
+
+        [data-theme='dark'] .dark-only {
+            display: block;
+        }
+
+        /* Mocked data notice */
+        .notice-banner {
+            background: var(--bg-muted);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .notice-banner strong {
+            color: var(--text-main);
+        }
+
+        /* Architecture Diagram */
+        .architecture-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .architecture-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-green);
+        }
+
+        .feature-card h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .tech-badge {
+            background: var(--bg-muted);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .tech-badge:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* Flow Description */
+        .flow-steps {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .flow-steps li {
+            position: relative;
+            padding-left: 40px;
+            padding-bottom: 24px;
+            border-left: 2px solid var(--border-subtle);
+            margin-left: 12px;
+        }
+
+        .flow-steps li:last-child {
+            border-left: none;
+            padding-bottom: 0;
+        }
+
+        .flow-steps li::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            border: 3px solid var(--bg-base);
+        }
+
+        .flow-steps li strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .flow-steps li span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* GitHub Link */
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text-main);
+            color: var(--bg-base);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            margin-top: 24px;
+        }
+
+        .github-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            color: var(--bg-base);
+        }
+
+        [data-theme='dark'] .github-link {
+            background: var(--accent-green);
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <div class="serif">Jared Mayron</div>
+                <div class="mono text-secondary"
+                    style="font-size: 0.7rem; text-transform: none; letter-spacing: 0; font-weight: 400; margin-top: 4px;">
+                    Academic research, orphaned projects, and creative engineering</div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aboutme.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/puck.html">Puck</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/finance.html">Finance</a></li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="btn btn-link nav-link order-last p-2"
+                            aria-label="Toggle theme">
+                            <svg id="theme-toggle-dark-icon" class="d-none" width="18" height="18" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg id="theme-toggle-light-icon" class="d-none" width="18" height="18" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                                </path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-section">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Finance Dashboard</h1>
+            <p class="lead">An end-to-end personal finance tracking system that aggregates financial data from multiple
+                sources into interactive dashboards.</p>
+        </div>
+
+        <!-- Screenshots Section -->
+        <section>
+            <h2 class="section-title">Dashboard Previews</h2>
+
+            <div class="notice-banner">
+                <strong>Note:</strong> The screenshots below show mocked data for demonstration purposes. The real
+                dashboards are used weekly to track actual financial metrics.
+            </div>
+
+            <div class="screenshots-grid">
+                <!-- Cash Reserve Heatmap - Light/Dark aware -->
+                <div class="screenshot-card">
+                    <img src="STATIC/images/finance_heatmap_light.png" alt="Cash Reserve History Heatmap"
+                        class="light-only">
+                    <img src="STATIC/images/finance_heatmap_dark.png" alt="Cash Reserve History Heatmap"
+                        class="dark-only">
+                    <div class="screenshot-caption">
+                        <strong>Cash Reserve History</strong>
+                        Interactive heatmap showing cash runway over time. Lighter squares indicate more recent
+                        measurements.
+                    </div>
+                </div>
+
+                <!-- Net Worth Donut Chart -->
+                <div class="screenshot-card">
+                    <img src="STATIC/images/finance_networth_light.png" alt="Net Worth Asset Allocation"
+                        class="light-only">
+                    <img src="STATIC/images/finance_networth_dark.png" alt="Net Worth Asset Allocation"
+                        class="dark-only">
+                    <div class="screenshot-caption">
+                        <strong>Net Worth Breakdown</strong>
+                        Asset allocation across investment, real estate, cash, and vehicle categories.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Architecture -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="text-secondary">Financial data flows from various external sources through aggregation,
+                transformation, and storage layers before reaching the visualization dashboards.</p>
+
+            <div class="architecture-container">
+                <img src="STATIC/images/architecture.svg" alt="System Architecture Diagram" class="light-only">
+                <img src="STATIC/images/architecture_dark.svg" alt="System Architecture Diagram" class="dark-only">
+            </div>
+
+            <ul class="flow-steps">
+                <li>
+                    <strong>Ingestion</strong>
+                    <span>Financial data from banks, credit cards, investment accounts, and real estate is automatically
+                        aggregated by PocketSmith via Plaid/Yodlee.</span>
+                </li>
+                <li>
+                    <strong>Extraction & Transformation</strong>
+                    <span>GCP Cloud Run (Python) pulls raw transaction and account data from the PocketSmith API,
+                        categorizes accounts, and calculates metrics.</span>
+                </li>
+                <li>
+                    <strong>Storage</strong>
+                    <span>Processed data is pushed directly to BigQuery, acting as the central data warehouse.</span>
+                </li>
+                <li>
+                    <strong>Visualization</strong>
+                    <span>Evidence Studio dashboards query BigQuery tables using SQL to generate interactive reports and
+                        visualizations.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Key Features -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Key Features</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Cash Runway Calculator</h4>
+                    <p>Determines how long cash reserves will last given no income and mandatory expenses, with
+                        historical tracking via heatmap visualization.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Net Worth Tracking</h4>
+                    <p>Comprehensive asset allocation breakdown across investment portfolios, real estate, cash
+                        reserves, and other assets.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>Checking Rebalancer</h4>
+                    <p>Recommends transfers between checking and savings based on personal finance best practices for
+                        maintaining 2 months of mandatory spending.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Tech Stack</h2>
+
+            <div class="tech-stack">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">GCP Cloud Run</span>
+                <span class="tech-badge">BigQuery</span>
+                <span class="tech-badge">Evidence Studio</span>
+                <span class="tech-badge">Terraform</span>
+                <span class="tech-badge">PocketSmith API</span>
+                <span class="tech-badge">Cloud Scheduler</span>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Security Posture</h2>
+            <p class="text-secondary">
+                The system includes a comprehensive STRIDE-based threat model covering spoofing, tampering, repudiation,
+                information disclosure, denial of service, and elevation of privilege risks.
+                Key mitigations include OIDC authentication for Cloud Run jobs, IAM-based access control following the
+                Principle of Least Privilege, and parameterized queries to prevent SQL injection.
+            </p>
+
+            <a href="https://github.com/JaredMayron/atlas-cannonball" target="_blank" rel="noopener"
+                class="github-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                VIEW ON GITHUB
+            </a>
+        </section>
+    </main>
+
+    <footer class="container text-center text-secondary mono py-5 mt-5"
+        style="font-size: 0.75rem; border-top: 1px solid var(--border-subtle);">
+        &copy; 2026 // Jared Mayron
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('d-none');
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            themeToggleDarkIcon.classList.remove('d-none');
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+
+        themeToggleBtn.addEventListener('click', function () {
+            themeToggleDarkIcon.classList.toggle('d-none');
+            themeToggleLightIcon.classList.toggle('d-none');
+
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
+</body>
+
+</html>
