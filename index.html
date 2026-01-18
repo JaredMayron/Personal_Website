@@ -55,6 +55,12 @@
       font-size: 0.85rem;
     }
 
+    /* Navbar brand subtitle wrapping */
+    .navbar-brand .mono {
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
     /* Navbar Redesign */
     .navbar {
       background-color: var(--bg-base) !important;
@@ -225,19 +231,56 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .card-hero {
+      .card-hero-3w {
         grid-column: span 2;
       }
     }
 
+    /* Mobile view: Single column, uniform 1x1 blocks */
     @media (max-width: 600px) {
       .bento-grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: minmax(auto, auto);
+        gap: 16px;
+        overflow-x: hidden;
       }
 
-      .card-hero,
-      .card-wide {
+      /* Reset all multi-column/row spans to 1x1 */
+      .card-hero-3w,
+      .card-tall-1w,
+      .card-wide,
+      .card-1w {
         grid-column: span 1;
+        grid-row: span 1;
+        min-width: 0;
+      }
+
+      .bento-card {
+        padding: 24px;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      /* Allow text to wrap on mobile instead of truncating */
+      .text-truncate-line {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+      }
+
+      /* Hide the visual preview on mobile for cleaner cards */
+      .puck-visual {
+        display: none;
+      }
+
+      /* Navbar adjustments */
+      .navbar {
+        padding: 1rem 0;
+      }
+
+      .navbar-brand .mono {
+        font-size: 0.65rem;
+        line-height: 1.4;
       }
     }
   </style>
