@@ -210,7 +210,7 @@
       <li>Delaunay.js creates a raw triangulation with global.triangulate</li>
       <li>Puck.js creates a mappable data structure with global.build, including discovering the convex hull</li>
       <li>Puck.js paths through the data structure, producing a path with global.path</li>
-      <li>This pages calls Canvas.js to render the edges, fills in the triangles, and renders the path to end</li>
+      <li>This page calls Canvas.js to render the edges, fills in the triangles, and renders the path to end</li>
     </ol>
     </p>
     <h2>Coloring</h2>
@@ -234,7 +234,8 @@
     <p class="lead">
       Every delaunay edge is the closest path from one point to another, and each circumcircle is equidistant between
       each
-      of the points. Futhermore each triangle's circumcircle does not contain any other point. What that means is a puck
+      of the points. Furthermore each triangle's circumcircle does not contain any other point. What that means is a
+      puck
       can pass between 2 other points if there's a delaunay edge between them and the puck can fit between them. A puck
       can pass through a triangle if it can fit in the circumcenter's radius. Due to the fact this is a delaunay
       triangulation, those points on the edges are the farthest away from adjacent disks. Circumcircle centers are the
