@@ -188,7 +188,8 @@
     }
 
     [data-theme='dark'] .pgp-preview-box {
-      background: var(--bg-muted);
+      background: #1e293b;
+      border-color: #334155 !important;
     }
 
     .btn-ui:hover {
@@ -214,7 +215,7 @@
       width: 100%;
       margin-top: 24px;
       border-radius: 12px;
-      background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTAwIEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTMiZSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTY1IEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTMiZSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjEyMCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTMiZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjI1IiBmaWxsPSJyZ2JhKDE2LCAxODUsIDEyOSwgMC4xKSIgc3Ryb2tlPSIjMTBiOTgxIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI4MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTMiZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjUiIHI9IjI1IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NGEzYmUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+') center no-repeat;
+      background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTAwIEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTNiZSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNODAgMTIwIEwyMDAgMTY1IEwzMjAgODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTNiZSIgc3Ryb2tlLWRhc2hhcnJheT0iNiw2IiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSI4MCIgY3k9IjEyMCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTNiZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDAiIHI9IjI1IiBmaWxsPSJyZ2JhKDE2LCAxODUsIDEyOSwgMC4xKSIgc3Ryb2tlPSIjMTBiOTgxIiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI4MCIgcj0iMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk0YTNiZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjUiIHI9IjI1IiBmaWxsPSJub25lIiBzdHJva2U9IiM5NGEzYmUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+') center no-repeat;
       border: 1px solid var(--border-subtle);
     }
 
@@ -284,8 +285,8 @@
     <a href="/puck.html" class="bento-card card-hero-3w status-active">
       <div>
         <h3 class="serif h2 mb-3">Puck Algorithm</h3>
-        <p class="text-secondary" style="max-width: 600px;">Navigating dynamic disk fields via Delaunay triangulation
-          and greedy DFS. A study in computational geometry.</p>
+        <p class="text-secondary text-truncate-line" style="max-width: 600px;">Navigating dynamic disk fields via
+          Delaunay triangulation and greedy DFS.</p>
         <div class="puck-visual"></div>
       </div>
       <div class="mt-4">
@@ -308,34 +309,32 @@
       </div>
     </a>
 
-    <!-- Row 2: About Me & Web Utilities (2W x 1H) -->
+    <!-- Row 2: About Me (2W), Beacon (1W), FITH (1W) -->
     <!-- Biography Card -->
     <div class="bento-card card-wide">
       <div>
         <h3 class="serif h4">About Me</h3>
-        <p class="text-secondary small">Security professional for web and security software living in Missouri. I
-          prioritize elegance and clarity in my code, focusing on simple solutions to complex problems. Outside of
-          engineering, you'll find me exploring classic cinema or skiing.</p>
+        <p class="text-secondary small text-truncate-line">Security professional focusing on elegance and simple
+          solutions to complex problems.</p>
       </div>
       <div class="mt-4">
         <a href="/aboutme.html" class="mono small text-decoration-none text-main">Read More &rarr;</a>
       </div>
     </div>
 
-    <!-- Web Utilities -->
-    <div class="bento-card card-wide">
+    <!-- Fire-In-The-Hole -->
+    <a href="https://jaredmayron.github.io/fireinthehole/" target="_blank"
+      class="bento-card card-1w card-legacy card-fith">
       <div>
-        <h3 class="serif h4">Web Utilities</h3>
-        <p class="text-secondary small">Security-focused experiments and deprecated toolsets.</p>
+        <div class="badge-legacy">Deactivated Mockup</div>
+        <h3 class="serif h6">Fire-In-The-Hole</h3>
+        <p class="small text-secondary mb-1 text-truncate-line">Wait time tracking.</p>
       </div>
-      <div class="d-flex gap-3 mt-4">
-        <a href="/tracker.html" class="mono small text-decoration-none text-main">Beacon &rarr;</a>
-        <a href="/keylogger.html" class="mono small text-decoration-none text-main">Keylogger &rarr;</a>
-        <a href="/teapot.html" class="mono small text-decoration-none text-main">HTCPCP &rarr;</a>
+      <div class="mono small text-secondary d-flex align-items-center" style="font-size: 0.65rem;">
+        <span class="status-dot status-heat"></span>mock data
       </div>
-    </div>
+    </a>
 
-    <!-- Row 3: Beacon & Keylogger (1W x 1H) -->
     <!-- Web Beacon -->
     <a href="/tracker.html" class="bento-card card-1w card-legacy">
       <div>
@@ -346,6 +345,7 @@
       <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
     </a>
 
+    <!-- Row 3: Keylogger (1W) -->
     <!-- Keylogger -->
     <a href="/keylogger.html" class="bento-card card-1w card-legacy">
       <div>
@@ -354,19 +354,6 @@
         <p class="small text-secondary mb-1 text-truncate-line">DNS exfiltration.</p>
       </div>
       <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"></span>dormant</div>
-    </a>
-
-    <!-- Fire-In-The-Hole -->
-    <a href="https://jaredmayron.github.io/fireinthehole/" target="_blank"
-      class="bento-card card-1w card-legacy card-fith">
-      <div>
-        <div class="badge-legacy">Deactivated Mockup</div>
-        <h3 class="serif h6">Fire-In-The-Hole</h3>
-        <p class="small text-secondary mb-1 text-truncate-line">Wait time tracking</p>
-      </div>
-      <div class="mono small text-secondary d-flex align-items-center" style="font-size: 0.65rem;">
-        <span class="status-dot status-heat"></span>mock data
-      </div>
     </a>
   </main>
 
