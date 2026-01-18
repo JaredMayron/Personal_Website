@@ -388,9 +388,9 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/aboutme.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/finance.html">Finance</a></li>
           <li class="nav-item"><a class="nav-link" href="/puck.html">Puck</a></li>
           <li class="nav-item"><a class="nav-link" href="/biometric_word_list_translator.html">PGP</a></li>
-          <li class="nav-item"><a class="nav-link" href="/finance.html">Finance</a></li>
           <li class="nav-item">
             <button id="theme-toggle" class="btn btn-link nav-link order-last p-2" aria-label="Toggle theme">
               <svg id="theme-toggle-dark-icon" class="d-none" width="18" height="18" viewBox="0 0 20 20"
@@ -411,36 +411,31 @@
   </nav>
 
   <main class="bento-grid" style="margin-top: 20px;">
-    <!-- Row 1: Finance Dashboard (3W x 2H) & About Me (1W x 2H) -->
-    <!-- Finance Dashboard - HERO -->
-    <a href="/finance.html" class="bento-card card-hero-3w status-active">
+    <!-- Row 1: Finance Dashboard (3W x 1H) & About Me (1W x 1H) -->
+    <!-- Finance Dashboard -->
+    <a href="/finance.html" class="bento-card card-3w status-active">
       <div>
-        <h3 class="serif h2 mb-3">Finance Dashboard</h3>
-        <p class="text-secondary text-truncate-line" style="max-width: 600px;">End-to-end personal finance tracking
-          system with automated data pipelines, BigQuery storage, and interactive Evidence dashboards.</p>
-        <div class="finance-visual mt-4"
-          style="height: 140px; display: flex; align-items: center; justify-content: center;">
-          <img src="STATIC/images/finance_donut_light.svg" alt="Net Worth Chart" class="light-only"
-            style="height: 100%;">
-          <img src="STATIC/images/finance_donut_dark.svg" alt="Net Worth Chart" class="dark-only" style="height: 100%;">
-        </div>
+        <h3 class="serif h4 mb-2">PocketSmith Supplement Finance Dashboard</h3>
+        <p class="text-secondary small text-truncate-line">End-to-end personal finance tracking system with automated
+          data pipelines.</p>
       </div>
-      <div class="mt-4 d-flex justify-content-between align-items-center">
-        <span class="btn-ui">VIEW DASHBOARDS</span>
+      <div class="d-flex justify-content-between align-items-center mt-3">
         <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"
             style="background: var(--accent-green);"></span>active</div>
+        <span class="mono small" style="font-size: 0.65rem; color: var(--text-secondary);">GCP • BigQuery •
+          Evidence</span>
       </div>
     </a>
 
-    <!-- About Me - Tall Card -->
-    <a href="/aboutme.html" class="bento-card card-tall-1w">
+    <!-- About Me -->
+    <a href="/aboutme.html" class="bento-card card-1w">
       <div>
         <h3 class="serif h5">About Me</h3>
-        <p class="small text-secondary mb-4">Security professional focusing on elegance and simple solutions to complex
-          problems.</p>
+        <p class="small text-secondary mb-3">Cloud Security Engineer focused on elegant solutions to Complex Problems
+        </p>
       </div>
-      <div class="mt-auto pt-3">
-        <span class="btn-ui w-100 text-center" style="font-size: 0.7rem;">READ MORE</span>
+      <div class="mt-auto pt-2">
+        <span class="mono small" style="font-size: 0.65rem; color: var(--text-secondary);">READ MORE →</span>
       </div>
     </a>
 
@@ -451,11 +446,11 @@
         <h3 class="serif h5">PGP Translator</h3>
         <p class="small text-secondary mb-3">Voice channel security.</p>
         <div class="mono small p-2 pgp-preview-box rounded border"
-          style="border-left: 3px solid var(--accent-green) !important; font-size: 0.7rem;">
-          [Hex] → [Words]
+          style="border-left: 3px solid var(--accent-green) !important; font-size: 0.6rem; opacity: 0.8;">
+          [Hex] ↔ [Words]
         </div>
       </div>
-      <div class="mt-auto pt-3">
+      <div class="mt-auto pt-4">
         <span class="btn-ui w-100 text-center" style="font-size: 0.7rem;">TRANSLATE</span>
       </div>
     </a>
@@ -464,14 +459,13 @@
     <a href="/puck.html" class="bento-card card-3w status-active">
       <div>
         <h3 class="serif h4 mb-2">Puck Algorithm</h3>
-        <p class="text-secondary small text-truncate-line">Navigating dynamic disk fields via Delaunay triangulation
-          and greedy DFS.</p>
-        <div class="puck-visual" style="height: 100px; margin-top: 16px;"></div>
+        <p class="text-secondary small text-truncate-line">Navigating dynamic disk fields via Delaunay triangulation and
+          greedy DFS.</p>
       </div>
       <div class="d-flex justify-content-between align-items-center mt-3">
-        <span class="btn-ui" style="font-size: 0.7rem;">EXPLORE DEMO</span>
         <div class="mono small text-secondary" style="font-size: 0.65rem;"><span class="status-dot"
             style="background: var(--accent-green);"></span>active</div>
+        <span class="btn-ui" style="font-size: 0.7rem;">EXPLORE DEMO</span>
       </div>
     </a>
 
