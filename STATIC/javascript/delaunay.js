@@ -13,14 +13,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-(function(global) {
+(function (global) {
 
   var EPSILON = 1.0e-10;
 
   //------------------------------------------------------------
   // Vertex class
   //------------------------------------------------------------
-  var id=0;
+  var id = 0;
   function Vertex(x, y) {
     this.x = x;
     this.y = y;
@@ -34,19 +34,19 @@
   function Triangle(v0, v1, v2) {
     this.v0 = v0;
     this.v1 = v1;
-    this.v2 = v2; 
+    this.v2 = v2;
 
-    this.id=id++;
+    this.id = id++;
 
     this.calcCircumcircle();
   }
 
-  Triangle.prototype.equals = function(other) {
+  Triangle.prototype.equals = function (other) {
     return this.id == other.id;
   };
 
 
-  Triangle.prototype.calcCircumcircle = function() {
+  Triangle.prototype.calcCircumcircle = function () {
     // From: http://www.exaflop.org/docs/cgafaq/cga1.html
 
     var A = this.v1.x - this.v0.x;
@@ -87,7 +87,7 @@
     this.radius = Math.sqrt(this.radius_squared);
   };
 
-  Triangle.prototype.inCircumcircle = function(v) {
+  Triangle.prototype.inCircumcircle = function (v) {
     var dx = this.center.x - v.x;
     var dy = this.center.y - v.y;
     var dist_squared = dx * dx + dy * dy;
@@ -96,8 +96,8 @@
   };
 
   //JM Custom Classes
-  Triangle.prototype.minimumClearence = function(){
-    return Math.sqrt((this.v0.x - this.center.x) * (this.v0.x - this.center.x) + (this.v0.y - this.center.y) * (this.v0.y - this.center.y))/2;
+  Triangle.prototype.minimumClearence = function () {
+    return Math.sqrt((this.v0.x - this.center.x) * (this.v0.x - this.center.x) + (this.v0.y - this.center.y) * (this.v0.y - this.center.y)) / 2;
   }
 
   //------------------------------------------------------------
@@ -113,14 +113,14 @@
 
     this.neighbors = [];
 
-    this.id=id++;
+    this.id = id++;
   }
 
-  Edge.prototype.equals = function(other) {
+  Edge.prototype.equals = function (other) {
     return (this.v0 === other.v0 && this.v1 === other.v1);
   };
 
-  Edge.prototype.inverse = function() {
+  Edge.prototype.inverse = function () {
     return new Edge(this.v1, this.v0);
   };
 
@@ -146,7 +146,7 @@
     //
     // Next, begin the triangulation one vertex at a time
     //
-    vertices.forEach(function(vertex) {
+    vertices.forEach(function (vertex) {
       // NOTE: This is O(n^2) - can be optimized by sorting vertices
       // along the x-axis and only considering triangles that have 
       // potentially overlapping circumcircles
@@ -156,7 +156,7 @@
     //
     // Remove triangles that shared edges with "supertriangle"
     //
-    triangles = triangles.filter(function(triangle) {
+    triangles = triangles.filter(function (triangle) {
       return !(triangle.v0 == st.v0 || triangle.v0 == st.v1 || triangle.v0 == st.v2 ||
         triangle.v1 == st.v0 || triangle.v1 == st.v1 || triangle.v1 == st.v2 ||
         triangle.v2 == st.v0 || triangle.v2 == st.v1 || triangle.v2 == st.v2);
@@ -172,7 +172,7 @@
     // you end up with a non-convex hull.
 
     var minx, miny, maxx, maxy;
-    vertices.forEach(function(vertex) {
+    vertices.forEach(function (vertex) {
       if (minx === undefined || vertex.x < minx) { minx = vertex.x; }
       if (miny === undefined || vertex.y < miny) { miny = vertex.y; }
       if (maxx === undefined || vertex.x > maxx) { maxx = vertex.x; }
@@ -195,7 +195,7 @@
 
     // Remove triangles with circumcircles containing the vertex
 
-    triangles = triangles.filter(function(triangle) {
+    triangles = triangles.filter(function (triangle) {
       if (triangle.inCircumcircle(vertex)) {
         edges.push(new Edge(triangle.v0, triangle.v1));
         edges.push(new Edge(triangle.v1, triangle.v2));
@@ -210,35 +210,10 @@
     edges = uniqueEdgesHash(edges);
 
     // Create new triangles from the unique edges and new vertex
-    edges.forEach(function(edge) {
+    edges.forEach(function (edge) {
       triangles.push(new Triangle(edge.v0, edge.v1, vertex));
     });
     return triangles;
-  }
-
- 
-  // Internal: remove duplicate edges from an array,
-  // old version not used
-  function uniqueEdges(edges) {
-    // TODO: This is O(n^2), make it O(n) with a hash or some such
-    var uniqueEdges = [];
-    for (var i = 0; i < edges.length; ++i) {
-      var edge1 = edges[i];
-      var unique = true;
-      for (var j = 0; j < edges.length; ++j) {
-        if (i === j)
-          continue;
-        var edge2 = edges[j];
-        if (edge1.equals(edge2) || edge1.inverse().equals(edge2)) {
-          unique = false;
-          break;
-        }
-      }
-
-      if (unique)
-        uniqueEdges.push(edge1);
-    }
-    return uniqueEdges;
   }
 
   //JM, Runs in O(2n) time
@@ -249,7 +224,7 @@
 
     for (var i = 0; i < edges.length; ++i) {
       var edge = edges[i];
-      if(firstPass.contains(edge)){
+      if (firstPass.contains(edge)) {
         secondPass.add(edge);
         continue;
       }
@@ -258,7 +233,7 @@
 
     for (var i = 0; i < edges.length; ++i) {
       var edge = edges[i];
-      if(secondPass.contains(edge)){
+      if (secondPass.contains(edge)) {
         continue;
       }
       uniqueEdges.push(edge);
@@ -272,77 +247,77 @@
   //JM Custom Classes 
   //JM Special HashSet Datatype for edges
   function EdgeSet() {
-    var setObj = {}; 
+    var setObj = {};
 
-    this.add = function(edge) {
-      if(this.contains(edge)){
+    this.add = function (edge) {
+      if (this.contains(edge)) {
         return false;
       }
       var v0 = edge.v0.id;
       var v1 = edge.v1.id;
 
-      setObj[[v0,v1]] = edge;
+      setObj[[v0, v1]] = edge;
       return true;
     };
 
-    this.contains = function(edge) {
-      if(setObj[[edge.v0.id,edge.v1.id]] != null){
+    this.contains = function (edge) {
+      if (setObj[[edge.v0.id, edge.v1.id]] != null) {
         return true;
-      } else if(setObj[[edge.v1.id,edge.v0.id]] != null){
+      } else if (setObj[[edge.v1.id, edge.v0.id]] != null) {
         return true;
       } else {
-        return false; 
+        return false;
       }
-      
+
     };
 
-    this.get = function(vertex1,vertex2) {
-      if(setObj[[vertex1.id,vertex2.id]] != null){
-        return setObj[[vertex1.id,vertex2.id]];
-      } else if(setObj[[vertex2.id,vertex1.id]] != null){
-        return setObj[[vertex2.id,vertex1.id]];
+    this.get = function (vertex1, vertex2) {
+      if (setObj[[vertex1.id, vertex2.id]] != null) {
+        return setObj[[vertex1.id, vertex2.id]];
+      } else if (setObj[[vertex2.id, vertex1.id]] != null) {
+        return setObj[[vertex2.id, vertex1.id]];
       } else {
         return null;
       }
     };
 
-    this.values = function() {
-        var values = [];
-        for (var i in setObj) {
-          values.push(setObj[i]);
-        }
-        return values;
+    this.values = function () {
+      var values = [];
+      for (var i in setObj) {
+        values.push(setObj[i]);
+      }
+      return values;
     };
   }
 
 
   //JM tostring methods
   Vertex.prototype.toString = function toString() {
-    return this.id + " ("+this.x+","+this.y+")";
+    return this.id + " (" + this.x + "," + this.y + ")";
   }
 
-  Vertex.prototype.equals = function equals(vertex){
+  Vertex.prototype.equals = function equals(vertex) {
     return this.id == vertex.id;
   }
 
   Edge.prototype.toString = function toString() {
-    return "["+this.v0.id+","+this.v1.id+"]";
+    return "[" + this.v0.id + "," + this.v1.id + "]";
   }
 
-//Finds the slope
+  //Finds the slope
   var infinity = 1e12;
-  Edge.prototype.slope = function slope(){
+  Edge.prototype.slope = function slope() {
     var dx = this.v0.x - this.v1.x;
     var dy = this.v0.y - this.v1.y;
-    if(dx == 0){
+    if (dx == 0) {
       return infinity;
     }
-    return dy/dx;
+    return dy / dx;
   }
 
-//Finds the midpoint
+  //Finds the midpoint
   Edge.prototype.midpoint = function midpoint() {
-    return new Vertex((this.v0.x+this.v1.x)/2,(this.v0.y+this.v1.y)/2);
+    return new Vertex((this.v0.x + this.v1.x) / 2, (this.v0.y + this.v1.y) / 2);
   }
 
 

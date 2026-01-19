@@ -9,77 +9,13 @@
     rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="STATIC/images/favicon.svg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="STATIC/styles/main.css">
   <style>
-    :root {
-      --bg-base: #ffffff;
-      --bg-muted: #f9fafb;
-      --text-main: #111827;
-      --text-secondary: #4b5563;
-      --border-subtle: #e5e7eb;
-      --accent-green: #10b981;
-      --card-bg: #ffffff;
-    }
-
     .text-truncate-line {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       display: block;
-    }
-
-    [data-theme='dark'] {
-      --bg-base: #0f172a;
-      --bg-muted: #1e293b;
-      --text-main: #f8fafc;
-      --text-secondary: #94a3b8;
-      --border-subtle: #334155;
-      --accent-green: #10b981;
-      --card-bg: #1e293b;
-    }
-
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding-bottom: 80px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .serif {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .mono {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-    }
-
-    /* Navbar brand subtitle wrapping */
-    .navbar-brand .mono {
-      white-space: normal;
-      word-wrap: break-word;
-    }
-
-    /* Navbar Redesign */
-    .navbar {
-      background-color: var(--bg-base) !important;
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.5rem 0;
-    }
-
-    .navbar-brand {
-      font-family: 'Playfair Display', serif;
-      color: var(--text-main) !important;
-      font-size: 1.5rem;
-    }
-
-    .nav-link {
-      color: var(--text-secondary) !important;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     .nav-link.active {
@@ -234,18 +170,6 @@
       border-radius: 4px;
       width: fit-content;
       margin-bottom: 1rem;
-    }
-
-    .btn-ui {
-      background: var(--text-main);
-      color: var(--bg-base);
-      border: 1px solid var(--text-main);
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      transition: all 0.2s ease;
     }
 
     [data-theme='dark'] .btn-ui {
@@ -505,32 +429,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const themeToggleBtn = document.getElementById('theme-toggle');
-
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      themeToggleLightIcon.classList.remove('d-none');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      themeToggleDarkIcon.classList.remove('d-none');
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-
-    themeToggleBtn.addEventListener('click', function () {
-      themeToggleDarkIcon.classList.toggle('d-none');
-      themeToggleLightIcon.classList.toggle('d-none');
-
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('color-theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('color-theme', 'dark');
-      }
-    });
-  </script>
+  <script src="STATIC/javascript/main.js"></script>
 </body>
 
 </html>
