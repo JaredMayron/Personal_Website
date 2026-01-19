@@ -6,6 +6,9 @@
     <meta name="description"
         content="End-to-end personal finance tracking system using PocketSmith, GCP Cloud Run, BigQuery, and Evidence Studio dashboards.">
     <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
@@ -353,9 +356,9 @@
                 <!-- Cash Reserve Heatmap - Light/Dark aware -->
                 <div class="screenshot-card">
                     <img src="STATIC/images/finance_heatmap_light.png" alt="Cash Reserve History Heatmap"
-                        class="light-only">
+                        class="light-only" loading="lazy" width="800" height="400">
                     <img src="STATIC/images/finance_heatmap_dark.png" alt="Cash Reserve History Heatmap"
-                        class="dark-only">
+                        class="dark-only" loading="lazy" width="800" height="400">
                     <div class="screenshot-caption">
                         <strong>Cash Reserve History</strong>
                         Interactive heatmap showing cash runway over time. Lighter squares indicate more recent
@@ -366,9 +369,9 @@
                 <!-- Net Worth Donut Chart -->
                 <div class="screenshot-card">
                     <img src="STATIC/images/finance_networth_light.png" alt="Net Worth Asset Allocation"
-                        class="light-only">
+                        class="light-only" loading="lazy" width="800" height="400">
                     <img src="STATIC/images/finance_networth_dark.png" alt="Net Worth Asset Allocation"
-                        class="dark-only">
+                        class="dark-only" loading="lazy" width="800" height="400">
                     <div class="screenshot-caption">
                         <strong>Net Worth Breakdown</strong>
                         Asset allocation across investment, real estate, cash, and vehicle categories.
@@ -384,8 +387,10 @@
                 transformation, and storage layers before reaching the visualization dashboards.</p>
 
             <div class="architecture-container">
-                <img src="STATIC/images/architecture.svg" alt="System Architecture Diagram" class="light-only">
-                <img src="STATIC/images/architecture_dark.svg" alt="System Architecture Diagram" class="dark-only">
+                <img src="STATIC/images/architecture.svg" alt="System Architecture Diagram" class="light-only"
+                    loading="lazy" width="1000" height="600">
+                <img src="STATIC/images/architecture_dark.svg" alt="System Architecture Diagram" class="dark-only"
+                    loading="lazy" width="1000" height="600">
             </div>
 
             <ul class="flow-steps">
@@ -480,9 +485,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="STATIC/javascript/main.js"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+        defer></script>
+    <script src="STATIC/javascript/main.js" defer></script>
 </body>
 
 </html>
