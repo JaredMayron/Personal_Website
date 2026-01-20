@@ -33,8 +33,10 @@ function initNavbar() {
         if (!navbar) return;
         if (window.innerWidth < 768) {
             navbar.classList.add('fixed-top');
+            document.body.classList.add('has-fixed-navbar');
         } else {
             navbar.classList.remove('fixed-top');
+            document.body.classList.remove('has-fixed-navbar');
         }
     }
 

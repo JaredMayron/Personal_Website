@@ -27,6 +27,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Clear fixed navbar on mobile */
+@media (max-width: 767px) {
+    body.has-fixed-navbar {
+        padding-top: 160px;
+    }
+}
+
 .serif {
     font-family: 'Playfair Display', serif;
 }
